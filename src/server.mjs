@@ -1,6 +1,7 @@
 import http from "node:http";
 import { readFile } from "node:fs/promises";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
+import { realpathSync } from "node:fs";
 import { verifyBundle } from "./protocol.mjs";
 const assets = new Map([
   ["/", ["index.html", "text/html"]],
@@ -88,10 +89,18 @@ function serverAddress(req) {
     return false;
   }
 }
-if (
-  process.argv[1] &&
-  import.meta.url === pathToFileURL(process.argv[1]).href
-) {
+function isMain() {
+  try {
+    return (
+      Boolean(process.argv[1]) &&
+      realpathSync(fileURLToPath(import.meta.url)) ===
+        realpathSync(process.argv[1])
+    );
+  } catch {
+    return false;
+  }
+}
+if (isMain()) {
   const port = Number(process.env.PORT || 4173);
   createServer().listen(port, "127.0.0.1", () =>
     console.log(`Koinos workbench: http://127.0.0.1:${port}`),

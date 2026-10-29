@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { open } from "node:fs/promises";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
+import { realpathSync } from "node:fs";
 import { generateIdentity, verifyBundle, summarize } from "./protocol.mjs";
 import {
   loadBundle,
@@ -122,7 +123,21 @@ export async function main(args = process.argv.slice(2)) {
   }
   throw new Error(`Unknown command: ${command}. Use --help.`);
 }
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href)
+// Node normally resolves the main module's symlinks but retains argv[1]'s spelling.
+// Resolve both sides, including when --preserve-symlinks-main changes that default.
+function isMain() {
+  if (!process.argv[1]) return false;
+  try {
+    return (
+      realpathSync(fileURLToPath(import.meta.url)) ===
+      realpathSync(process.argv[1])
+    );
+  } catch {
+    // Stdin/eval callers may use '-' or another non-file argv[1]. Import only.
+    return false;
+  }
+}
+if (isMain())
   main().catch((error) => {
     process.stderr.write(`Error: ${error.message}\n`);
     process.exitCode = 1;

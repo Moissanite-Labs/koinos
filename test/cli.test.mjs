@@ -1,10 +1,18 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { mkdtemp, rm, stat, readFile, writeFile } from "node:fs/promises";
+import {
+  mkdtemp,
+  rm,
+  stat,
+  readFile,
+  writeFile,
+  symlink,
+  mkdir,
+} from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join, dirname } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
 const cli = fileURLToPath(new URL("../src/cli.mjs", import.meta.url));
 const run = (...args) =>
   spawnSync(process.execPath, [cli, ...args], { encoding: "utf8" });
@@ -63,4 +71,68 @@ test("CLI creates protected non-overwriting keys and portable verified demo expo
   } finally {
     await rm(dir, { recursive: true, force: true });
   }
+});
+
+test("CLI runs through symlinked directories and bin links with observable success and failure", async (t) => {
+  const dir = await mkdtemp(join(tmpdir(), "koinos-cli-links-"));
+  try {
+    const linked = join(dir, "package"),
+      bin = join(dir, "bin");
+    await mkdir(bin);
+    await symlink(
+      dirname(dirname(cli)),
+      linked,
+      process.platform === "win32" ? "junction" : "dir",
+    );
+    const binCli = join(bin, "koinos.mjs");
+    let binAvailable = true;
+    try {
+      await symlink(cli, binCli, "file");
+    } catch (error) {
+      if (process.platform !== "win32" || error.code !== "EPERM") throw error;
+      binAvailable = false;
+      t.diagnostic(
+        "Windows denied file symlink creation; bin-link variant skipped, junction variants remain covered.",
+      );
+    }
+    const valid = join(dir, "valid.json"),
+      invalid = join(dir, "invalid.json");
+    assert.equal(run("demo", valid).status, 0);
+    await writeFile(invalid, "{}");
+    const variants = [
+      [join(linked, "src/cli.mjs")],
+      ["--preserve-symlinks-main", join(linked, "src/cli.mjs")],
+      ...(binAvailable ? [[binCli]] : []),
+    ];
+    for (const variant of variants) {
+      const success = spawnSync(
+        process.execPath,
+        [...variant, "verify", valid],
+        { encoding: "utf8" },
+      );
+      assert.equal(success.status, 0, success.stderr);
+      assert.equal(JSON.parse(success.stdout).valid, true);
+      const failure = spawnSync(
+        process.execPath,
+        [...variant, "verify", invalid],
+        { encoding: "utf8" },
+      );
+      assert.equal(failure.status, 1);
+      assert.match(failure.stderr, /Error:/);
+      assert.equal(failure.stdout, "");
+    }
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("CLI can be imported from stdin without executing main", () => {
+  const script = `const {main} = await import(${JSON.stringify(pathToFileURL(cli).href)}); console.log(typeof main);`;
+  const result = spawnSync(process.execPath, ["--input-type=module", "-"], {
+    input: script,
+    encoding: "utf8",
+  });
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(result.stdout.trim(), "function");
+  assert.equal(result.stderr, "");
 });

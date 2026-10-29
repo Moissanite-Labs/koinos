@@ -13,7 +13,11 @@ function canonical(value) {
     }
     return JSON.stringify(value);
   }
-  if (typeof value === "number" && Number.isSafeInteger(value))
+  if (
+    typeof value === "number" &&
+    Number.isSafeInteger(value) &&
+    !Object.is(value, -0)
+  )
     return String(value);
   if (Array.isArray(value)) return "[" + value.map(canonical).join(",") + "]";
   if (value && Object.getPrototypeOf(value) === Object.prototype)
