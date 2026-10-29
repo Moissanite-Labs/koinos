@@ -1,5 +1,6 @@
 import { createPublicKey, createPrivateKey, sign, verify } from "node:crypto";
 import { canonicalize, digestBytes } from "./protocol.mjs";
+export const SETTLEMENT_RECIPIENT_LIMIT = 32;
 const FORMAT = "koinos-open/0.2",
   MAX = 10000;
 const fail = (m) => {
@@ -446,12 +447,22 @@ export function createOpenRecord({
   kind,
   body,
   parents,
-  time = new Date().toISOString(),
+  time,
 }) {
   if (!Array.isArray(records)) fail("Records required");
   const state = records.length
     ? verifyOpenBundle({ format: FORMAT, records })
     : null;
+  const selectedParents = parents ?? state?.heads ?? [];
+  sortedIds(selectedParents);
+  const byId = new Map(records.map((record) => [record.id, record]));
+  for (const parent of selectedParents)
+    if (!byId.has(parent)) fail("Missing parent");
+  if (time === undefined) {
+    time = new Date().toISOString();
+    for (const parent of selectedParents)
+      if (byId.get(parent).time > time) time = byId.get(parent).time;
+  }
   const key = createPrivateKey(identity.privateKey);
   if (key.asymmetricKeyType !== "ed25519") fail("Ed25519 key required");
   const derived =
@@ -467,7 +478,7 @@ export function createOpenRecord({
     kind,
     body,
     time,
-    parents: parents ?? state?.heads ?? [],
+    parents: selectedParents,
   };
   const id = digestBytes(canonicalize(unsigned));
   const record = {
@@ -558,6 +569,10 @@ function evmAddress(v) {
   );
 }
 function validateBindings(contribution, intent, bindings) {
+  if (contribution.credit.length > SETTLEMENT_RECIPIENT_LIMIT)
+    fail(
+      `Settlement supports at most ${SETTLEMENT_RECIPIENT_LIMIT} credit recipients`,
+    );
   const required = new Set([
       contribution.actor,
       ...contribution.credit.map((c) => c.actor),

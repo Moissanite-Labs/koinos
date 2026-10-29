@@ -121,3 +121,58 @@ test("open CLI verifies, authors, merges, matches and exports only opted-in feed
     await rm(dir, { recursive: true, force: true });
   }
 });
+
+test("future-dated imported heads remain appendable through store and CLI defaults", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "koinos-future-head-"));
+  try {
+    const identity = generateIdentity(),
+      foreign = generateIdentity(),
+      path = join(dir, "store.json"),
+      key = join(dir, "key.pem"),
+      body = join(dir, "profile.json");
+    const first = createOpenRecord({
+      records: [],
+      identity,
+      kind: "profile.published",
+      body: profile("Local"),
+      time: "2026-01-01T00:00:00.000Z",
+    });
+    const future = createOpenRecord({
+      records: [first],
+      identity: foreign,
+      kind: "profile.published",
+      body: profile("Future assertion"),
+      time: "9999-12-31T23:59:59.999Z",
+    });
+    await mergeOpenFile(path, createOpenBundle([first]));
+    await mergeOpenFile(path, createOpenBundle([first, future]));
+    await appendOpenFile(path, {
+      identity,
+      kind: "profile.published",
+      body: profile("Store append"),
+    });
+    let bundle = await loadOpenBundle(path);
+    assert.equal(bundle.records.at(-1).time, future.time);
+    const before = await readFile(path, "utf8");
+    await assert.rejects(
+      appendOpenFile(path, {
+        identity,
+        kind: "profile.published",
+        body: profile("Explicit backwards"),
+        time: "2026-01-02T00:00:00.000Z",
+      }),
+      /Backwards parent time/,
+    );
+    assert.equal(await readFile(path, "utf8"), before);
+    await writeFile(key, identity.privateKey, { mode: 0o600 });
+    await writeFile(body, JSON.stringify(profile("CLI append")));
+    const result = run("open", "append", path, key, "profile.published", body);
+    assert.equal(result.status, 0, result.stderr);
+    bundle = await loadOpenBundle(path);
+    assert.equal(bundle.records.length, 4);
+    assert.equal(bundle.records.at(-1).time, future.time);
+    assert.equal(verifyOpenBundle(bundle).profiles.at(-1).name, "CLI append");
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});

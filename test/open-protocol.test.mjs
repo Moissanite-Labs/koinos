@@ -637,3 +637,154 @@ test("bindings cannot cross chain/project or alias two beneficiaries to one wall
     /Distinct destination/,
   );
 });
+
+test("future-dated heads do not prevent default append; explicit backwards time still fails", () => {
+  const a = profile([], generateIdentity());
+  const future = createOpenRecord({
+    records: [a],
+    identity,
+    kind: "profile.published",
+    body: {
+      name: "Future assertion",
+      skills: [],
+      needs: [],
+      role: "builder",
+      statement: "Untrusted signed timestamp",
+    },
+    time: "9999-12-31T23:59:59.999Z",
+  });
+  const records = mergeOpenBundles(
+    createOpenBundle([a]),
+    createOpenBundle([a, future]),
+  ).records;
+  const body = {
+    name: "New work",
+    skills: [],
+    needs: [],
+    role: "builder",
+    statement: "Must remain appendable",
+  };
+  const next = createOpenRecord({
+    records,
+    identity,
+    kind: "profile.published",
+    body,
+  });
+  assert.equal(next.time, future.time);
+  assert.deepEqual(next.parents, [future.id]);
+  assert.throws(
+    () =>
+      createOpenRecord({
+        records,
+        identity,
+        kind: "profile.published",
+        body,
+        time,
+      }),
+    /Backwards parent time/,
+  );
+  const separate = createOpenRecord({
+    records,
+    identity,
+    kind: "profile.published",
+    body,
+    parents: [a.id],
+  });
+  assert.ok(separate.time < future.time);
+});
+
+test("graph retains 33 beneficiaries while settlement enforces the 32-recipient contract boundary", () => {
+  const owner = generateIdentity(),
+    actors = Array.from({ length: 100 }, () => generateIdentity());
+  let records = [];
+  const add = (identity, kind, body) => {
+    const r = createOpenRecord({ records, identity, kind, body, time });
+    records.push(r);
+    return r.id;
+  };
+  const originator = add(owner, "profile.published", {
+    name: "Owner",
+    skills: [],
+    needs: [],
+    role: "creator",
+    statement: "Boundary",
+  });
+  const project = add(owner, "project.created", {
+    title: "Boundary",
+    opportunity: null,
+    originator,
+    policy: "Policy",
+    terms: { uri: "urn:terms", digest: digestBytes("terms") },
+    source: null,
+  });
+  const creditFor = (n) =>
+    actors
+      .slice(0, n)
+      .map((a, i) => ({
+        actor: a.id,
+        weight:
+          i === n - 1
+            ? 10000 - (n - 1) * Math.floor(10000 / n)
+            : Math.floor(10000 / n),
+      }))
+      .sort((a, b) => (a.actor < b.actor ? -1 : 1));
+  const claim = (n) =>
+    add(owner, "contribution.claimed", {
+      project,
+      title: `${n} beneficiaries`,
+      evidence: { uri: "urn:evidence", digest: digestBytes("evidence") },
+      references: [],
+      credit: creditFor(n),
+    });
+  const c33 = claim(33),
+    c32 = claim(32),
+    c100 = claim(100);
+  const principal = add(owner, "wallet.bound", {
+    project,
+    chainId: 31337,
+    address: "0x" + "f".repeat(40),
+  });
+  const bindings = actors
+    .slice(0, 33)
+    .map((a, i) =>
+      add(a, "wallet.bound", {
+        project,
+        chainId: 31337,
+        address: "0x" + (i + 1).toString(16).padStart(40, "0"),
+      }),
+    );
+  const body = {
+    project,
+    contribution: c33,
+    chainId: 31337,
+    contract: "0x" + "e".repeat(40),
+    bindings: [principal, ...bindings].sort(),
+  };
+  assert.equal(
+    verifyOpenBundle(createOpenBundle(records)).contributions.find(
+      (c) => c.id === c33,
+    ).credit.length,
+    33,
+  );
+  assert.equal(
+    verifyOpenBundle(createOpenBundle(records)).contributions.find(
+      (c) => c.id === c100,
+    ).credit.length,
+    100,
+  );
+  assert.throws(
+    () => add(owner, "settlement.intent", body),
+    /at most 32 credit recipients/,
+  );
+  const intent = add(owner, "settlement.intent", {
+    ...body,
+    contribution: c32,
+    bindings: [principal, ...bindings.slice(0, 32)].sort(),
+  });
+  const plan = deriveSettlementPlan(createOpenBundle(records), intent);
+  assert.equal(plan.recipients.length, 32);
+  assert.equal(
+    plan.weights.reduce((a, b) => a + b),
+    10000,
+  );
+});
