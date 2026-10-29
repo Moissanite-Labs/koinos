@@ -1,0 +1,18 @@
+{
+  "name": "@moissanite-labs/koinos",
+  "version": "0.1.0",
+  "description": "Portable, signed collaboration records for independent people, agents and projects",
+  "type": "module",
+  "private": true,
+  "license": "UNLICENSED",
+  "engines": { "node": ">=22" },
+  "exports": "./src/protocol.mjs",
+  "bin": { "koinos": "./src/cli.mjs" },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "conformance": "node scripts/conformance.mjs",
+    "demo": "node src/cli.mjs demo"
+  }
+}

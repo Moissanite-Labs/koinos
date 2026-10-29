@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+coverage/
+.koinos/
+*.pem
+*.key
+*.lock
+*.tmp
+playwright-report/
+test-results/
