@@ -959,3 +959,86 @@ test("maximum thirty-two reviewer quorum can verify and settle its full ABI proo
     await c.close();
   }
 });
+
+test("cumulative source entitlement is invariant to tiny deposit fragmentation and fee endpoints", async () => {
+  const c = await fixture();
+  try {
+    const makeBranch = (name, sourceFeeBps) =>
+      c.create(
+        c.factory,
+        policy(c.verifier.target, c.payment.target, {
+          name,
+          sourceProject: c.project.target,
+          sourceFeeBps,
+        }),
+        [[c.addresses[1], 9900n]],
+      );
+    const bulk = await makeBranch("Bulk receipts", 2000);
+    const split = await makeBranch("Split receipts", 2000);
+    await fund(c, bulk, 13n);
+    assert.equal(await bulk.totalSourceFees(), 2n);
+    for (let i = 1; i <= 13; i++) {
+      await fund(c, split, 1n);
+      assert.equal(
+        await split.totalSourceFees(),
+        (BigInt(i) * 2000n) / 10000n,
+        `source dust crossing at gross ${i}`,
+      );
+      assert.equal(
+        (await split.totalRevenue()) + (await split.totalSourceFees()),
+        BigInt(i),
+      );
+    }
+    assert.equal(await split.totalSourceFees(), await bulk.totalSourceFees());
+    assert.equal(await split.totalRevenue(), 11n);
+    assert.equal(await bulk.totalRevenue(), 11n);
+    assert.equal(await c.project.totalRevenue(), 4n);
+    assert.equal(await c.payment.balanceOf(split.target), 11n);
+    assert.equal(await c.payment.balanceOf(bulk.target), 11n);
+    assert.equal(await c.payment.balanceOf(c.project.target), 4n);
+    const mixed = await makeBranch("Mixed receipt sizes", 2000);
+    for (const amount of [2n, 3n, 1n, 7n]) await fund(c, mixed, amount);
+    assert.equal(await mixed.totalSourceFees(), 2n);
+    assert.equal(await mixed.totalRevenue(), 11n);
+    assert.equal(await c.payment.balanceOf(mixed.target), 11n);
+    assert.equal(await c.project.totalRevenue(), 6n);
+    const zero = await makeBranch("Zero source fee", 0);
+    const full = await makeBranch("All receipts to source", 10000);
+    for (const branch of [zero, full]) {
+      await fund(c, branch, 1n);
+      await fund(c, branch, 1n);
+    }
+    assert.equal(await zero.totalRevenue(), 2n);
+    assert.equal(await zero.totalSourceFees(), 0n);
+    assert.equal(await full.totalRevenue(), 0n);
+    assert.equal(await full.totalSourceFees(), 2n);
+    assert.equal(await c.payment.balanceOf(full.target), 0n);
+    assert.equal(await c.project.totalRevenue(), 8n);
+  } finally {
+    await c.close();
+  }
+});
+
+test("source forwarding failure rolls back the entire funded deposit and cumulative fee", async () => {
+  const c = await fixture();
+  try {
+    const limit = (1n << 80n) - 1n;
+    await fund(c, c.project, limit);
+    const branch = await c.create(
+      c.factory,
+      policy(c.verifier.target, c.payment.target, {
+        sourceProject: c.project.target,
+        sourceFeeBps: 2000,
+      }),
+    );
+    await assert.rejects(fund(c, branch, 5n), /revenue cap/);
+    assert.equal(await branch.totalRevenue(), 0n);
+    assert.equal(await branch.totalSourceFees(), 0n);
+    assert.equal(await c.payment.balanceOf(branch.target), 0n);
+    assert.equal(await c.payment.balanceOf(c.project.target), limit);
+    assert.equal(await c.project.totalRevenue(), limit);
+    assert.equal(await c.payment.balanceOf(c.addresses[0]), 5n);
+  } finally {
+    await c.close();
+  }
+});

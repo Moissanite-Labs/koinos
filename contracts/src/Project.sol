@@ -255,7 +255,9 @@ contract Project is ERC20, ReentrancyGuard {
         uint256 beforeBalance = paymentAsset.balanceOf(address(this));
         paymentAsset.safeTransferFrom(msg.sender, address(this), amount);
         require(paymentAsset.balanceOf(address(this)) == beforeBalance + amount, "nonstandard payment asset");
-        uint256 fee = Math.mulDiv(amount, sourceFeeBps, 10000);
+        // Carry fractional source entitlement across deposits. Splitting a receipt
+        // cannot reduce the source's cumulative share of the funded gross amount.
+        uint256 fee = Math.mulDiv(totalRevenue + totalSourceFees + amount, sourceFeeBps, 10000) - totalSourceFees;
         uint256 net = amount - fee;
         totalSourceFees += fee; totalRevenue += net;
         if (net > 0) {
