@@ -23,7 +23,17 @@ Project founders and contributors need a way to understand who did what and whic
 
 Koinos does not by itself incorporate entities, establish ownership, execute payments, create a currency or token, or determine legal rights. Any such capabilities, networks, and terms would require separate decisions, explicit agreements, and appropriate review.
 
+## Longer-term directions to explore
+
+In an October 2026 discussion, the founder envisioned a decentralized collaboration economy where people with ideas and markets can find builders, and builders can find partners who help them bring projects to market. Exofab is the prospective place for that human-first matching and collaboration; Koinos would provide reusable coordination and economic contracts that can also serve other communities. The goal includes exploring trust-minimized collaboration where agreed terms can be verified. Agents could help participants carry out agreed terms, with credit and profits allocated according to rules the participants explicitly agree to. As a design recommendation, verification should not assume that technology alone removes the need for trust or oversight.
+
+Ideas from that discussion include shared credit, revenue and ownership arrangements, smart contracts, payment tools such as x402, and decision models operating against specific pre-agreed criteria. The founder also raised prediction-market resolution as a possible parallel for investigating decisions and outcomes. In separately transcribed earlier paper notes, the founder explored rewards for contributors to common infrastructure and to individual projects or specialized marketplaces, including an illustrative one percent per contributor, minting and dilution, and a hybrid equity and revenue-share model. These are historical ideas to evaluate, not selected terms, financial products, or promises. As design recommendations, implementations should have consent, transparent review, safeguards, and appropriate legal and economic review.
+
+Potential applications extend beyond software to marketplaces for skills, learning, agents, pets, models, services, and other peer-to-peer activity. One longer-term idea is decentralized learning and skill sharing connected to voluntary profit sharing. In the October discussion the founder also explored idle resource sharing, including memory and compute, with returns for node operators and a share for the protocol. It remains a separate possibility, not a selected financial mechanism, operating commitment, or dependency. Longer term, the founder also envisions robotics assisting creation as technology permits. Each application would need its own feasibility and rights assessment.
+
 ## First vertical slice
+
+The following sequence and acceptance criteria are implementation recommendations for discussion, not decisions the founder has already adopted.
 
 1. Write an example of a project, a scoped agent task, a reviewed artifact, an accepted contribution, and a reference to a human agreement. Define what each participant can inspect and consent to.
 2. Propose minimal versioned records and exchange contracts, using the example to expose open questions about identity, authority, privacy, and provenance.
