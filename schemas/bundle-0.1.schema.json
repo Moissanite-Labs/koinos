@@ -5,10 +5,7 @@
   "$comment": "Structural aid only. Runtime verifies canonical encoding, Unicode, limits, signatures, references, timestamps and stateful authority. The example identifier is not a hosted service.",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "format",
-    "records"
-  ],
+  "required": ["format", "records"],
   "properties": {
     "format": {
       "const": "koinos-bundle/0.1"
@@ -104,11 +101,7 @@
                 "body": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": [
-                    "title",
-                    "description",
-                    "participants"
-                  ],
+                  "required": ["title", "description", "participants"],
                   "properties": {
                     "title": {
                       "type": "string",
@@ -127,11 +120,7 @@
                       "items": {
                         "type": "object",
                         "additionalProperties": false,
-                        "required": [
-                          "id",
-                          "name",
-                          "kind"
-                        ],
+                        "required": ["id", "name", "kind"],
                         "properties": {
                           "id": {
                             "type": "string",
@@ -143,10 +132,7 @@
                             "maxLength": 256
                           },
                           "kind": {
-                            "enum": [
-                              "human",
-                              "agent"
-                            ]
+                            "enum": ["human", "agent"]
                           }
                         }
                       }
@@ -169,12 +155,7 @@
                 "body": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": [
-                    "title",
-                    "uri",
-                    "digest",
-                    "parties"
-                  ],
+                  "required": ["title", "uri", "digest", "parties"],
                   "properties": {
                     "title": {
                       "type": "string",
@@ -218,9 +199,7 @@
                 "body": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": [
-                    "agreement"
-                  ],
+                  "required": ["agreement"],
                   "properties": {
                     "agreement": {
                       "type": "string",
@@ -244,10 +223,7 @@
                 "body": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": [
-                    "agreement",
-                    "reason"
-                  ],
+                  "required": ["agreement", "reason"],
                   "properties": {
                     "agreement": {
                       "type": "string",
@@ -276,12 +252,7 @@
                 "body": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": [
-                    "agent",
-                    "agreement",
-                    "scope",
-                    "expires"
-                  ],
+                  "required": ["agent", "agreement", "scope", "expires"],
                   "properties": {
                     "agent": {
                       "type": "string",
@@ -292,9 +263,7 @@
                       "pattern": "^[0-9a-f]{64}$"
                     },
                     "scope": {
-                      "const": [
-                        "contribution.submit"
-                      ]
+                      "const": ["contribution.submit"]
                     },
                     "expires": {
                       "type": "string",
@@ -318,10 +287,7 @@
                 "body": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": [
-                    "delegation",
-                    "reason"
-                  ],
+                  "required": ["delegation", "reason"],
                   "properties": {
                     "delegation": {
                       "type": "string",
@@ -371,10 +337,7 @@
                     "artifact": {
                       "type": "object",
                       "additionalProperties": false,
-                      "required": [
-                        "uri",
-                        "digest"
-                      ],
+                      "required": ["uri", "digest"],
                       "properties": {
                         "uri": {
                           "type": "string",
@@ -420,21 +383,14 @@
                 "body": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": [
-                    "contribution",
-                    "decision",
-                    "note"
-                  ],
+                  "required": ["contribution", "decision", "note"],
                   "properties": {
                     "contribution": {
                       "type": "string",
                       "pattern": "^[0-9a-f]{64}$"
                     },
                     "decision": {
-                      "enum": [
-                        "approve",
-                        "request_changes"
-                      ]
+                      "enum": ["approve", "request_changes"]
                     },
                     "note": {
                       "type": "string",
@@ -459,10 +415,7 @@
                 "body": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": [
-                    "contribution",
-                    "review"
-                  ],
+                  "required": ["contribution", "review"],
                   "properties": {
                     "contribution": {
                       "type": "string",
@@ -490,10 +443,7 @@
                 "body": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": [
-                    "contribution",
-                    "reason"
-                  ],
+                  "required": ["contribution", "reason"],
                   "properties": {
                     "contribution": {
                       "type": "string",

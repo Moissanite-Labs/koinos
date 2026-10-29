@@ -5,12 +5,16 @@
   "type": "module",
   "private": true,
   "license": "UNLICENSED",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "exports": "./src/protocol.mjs",
-  "bin": { "koinos": "./src/cli.mjs" },
+  "bin": {
+    "koinos": "./src/cli.mjs"
+  },
   "scripts": {
     "start": "node src/server.mjs",
-    "test": "node --test test/*.test.mjs",
+    "test": "node --test",
     "check": "node scripts/check.mjs",
     "conformance": "node scripts/conformance.mjs",
     "demo": "node src/cli.mjs demo"

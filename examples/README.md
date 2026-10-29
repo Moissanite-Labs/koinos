@@ -1,6 +1,6 @@
 # Fictional cooperation example
 
-`accepted.bundle.json` is a complete signed sandbox history, not actual people, consent, work, or a live Exofab/Synbios integration. Generated keys were discarded. Every record is visible in the export. Its artifact/terms addresses use `example.invalid`; neither is fetched. Digests identify the fictional bytes passed by the demo, not independently verified content.
+`accepted.bundle.json` is a complete signed sandbox history, not actual people, consent, work, or a live Exofab/Synbios integration. Generated keys were discarded. Every record is visible in the export. Its artifact/terms addresses use `example.invalid`; neither is fetched. The example includes `terms.txt` and `seed-catalogue.schema.json`: conformance independently hashes their exact bytes and compares them with the signed agreement and artifact digests, then checks the required schema fields. The task and participants remain fictional. Arbitrary imported artifact/terms URIs are never fetched or verified against content by the protocol.
 
 The eight records show a fictional Exofab-style human proposal, an explicit agreement with two human parties, both signatures of consent, one scoped delegation, a fictional Synbios-style agent submission, a human review independent of both agent and principal, and steward acceptance. Acceptance preserves agent attribution and the human principal.
 
@@ -45,3 +45,5 @@ node src/cli.mjs verify /tmp/second-consumer.json EXPECTED_HEAD EXPECTED_PROJECT
 ```
 
 Body files contain exact event body objects described in `docs/protocol.md`. Key generation and export refuse to overwrite existing files. Key files are PKCS8 PEM with mode 600; keep them outside version control. A cooperating writer holds `STORE.lock` through validation and atomic rename. Contending writers fail explicitly and can retry. A crashed writer can leave a stale lock: inspect the writer and store before manually removing it. This local lock is not a distributed synchronization mechanism. Back up your store and keys separately.
+
+CLI/store JSON source files are capped at 16 MiB before parsing (including whitespace), and private PEM files at 16 KiB. Invalid UTF-8, truncated JSON, and duplicate object keys (including equivalent escaped keys) are rejected. Exports and stored bundles use compact JSON so a bundle within the canonical byte limit remains readable. Signatures cover canonical logical records, not the original source-file whitespace or key order.

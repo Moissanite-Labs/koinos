@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/seed-catalogue/schema.json",
+  "title": "Seed catalogue entry (sandbox)",
+  "description": "A fictional collaboration artifact for exchanging seed catalogue metadata. It does not certify species, provenance, safety, or rights.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "commonName", "scientificName", "origin"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "commonName": { "type": "string", "minLength": 1, "maxLength": 256 },
+    "scientificName": { "type": "string", "minLength": 1, "maxLength": 256 },
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["region", "source"],
+      "properties": {
+        "region": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "source": { "type": "string", "minLength": 1, "maxLength": 1024 }
+      }
+    },
+    "harvestYear": { "type": "integer", "minimum": 1900, "maximum": 2100 },
+    "notes": { "type": "string", "maxLength": 4096 }
+  }
+}

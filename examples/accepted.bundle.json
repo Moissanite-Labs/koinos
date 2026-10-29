@@ -2,154 +2,154 @@
   "format": "koinos-bundle/0.1",
   "records": [
     {
-      "actor": "koinos:ed25519:FVMx1X5vk6S7cD0qVlv4f5Vw4PmyyhtwO9sIEX5Z-mE",
+      "actor": "koinos:ed25519:SoF2CWVYloORYABiNzU_r2WPoS--MYwg1zGFkBMi5f8",
       "body": {
         "description": "Fictional Exofab-style proposal for a portable seed catalogue; no live integration.",
         "participants": [
           {
-            "id": "koinos:ed25519:FVMx1X5vk6S7cD0qVlv4f5Vw4PmyyhtwO9sIEX5Z-mE",
+            "id": "koinos:ed25519:SoF2CWVYloORYABiNzU_r2WPoS--MYwg1zGFkBMi5f8",
             "kind": "human",
-            "name": "Mira (fictional proposer)"
+            "name": "Mira"
           },
           {
-            "id": "koinos:ed25519:n15KCiv3R1aGviqugqGBFOEgspvcHVxB0b5wVqzRKRA",
+            "id": "koinos:ed25519:FSjtopCZcfTtefwv7iuqVtSAOqhijDT8uX7ZvWFqaP0",
             "kind": "human",
-            "name": "Jon (fictional independent reviewer)"
+            "name": "Jon"
           },
           {
-            "id": "koinos:ed25519:CVLG0ROzxIiimpWJ6hVug-fcASLcUeRxmKwOHvqCAP4",
+            "id": "koinos:ed25519:AHdfxe6OuRxYZB0JlKfL6cL39cLzab4WnBUj3VD7pio",
             "kind": "agent",
-            "name": "Seed builder (fictional Synbios-style agent)"
+            "name": "Seed builder"
           }
         ],
         "title": "Community seed catalogue"
       },
-      "id": "c855e08a4186a59764a8951faddb948bd5f20f30cd5a26666cc28298bcc9e786",
+      "id": "414f93702a4207b333fde7d2abe23af689887ae6bdc7946208bff585b58cf894",
       "kind": "project.created",
       "previous": null,
-      "project": "6494b842-1031-44fa-9e49-2b7575761e96",
+      "project": "61c8fc2d-e6b5-49ad-8c12-fe76536eb966",
       "protocol": "koinos/0.1",
       "sequence": 0,
-      "signature": "qOM7f2DlMbRZlNmUHWkgmnki3-bX0ObUEWjRgrKr4M39CHL1i-jZUyFpiXHKeuGU_6jUAnArDG3-lgPqNIVUCQ",
+      "signature": "tVpEKN7grfQ7e_tn-FUZBFY9hg7bNksNytBPspcGMxAdcMEfpWZ1bOEnZyX-804PW0N9ZMJerRfOK-Kba0s8DQ",
       "time": "2026-01-01T12:00:00.000Z"
     },
     {
-      "actor": "koinos:ed25519:FVMx1X5vk6S7cD0qVlv4f5Vw4PmyyhtwO9sIEX5Z-mE",
+      "actor": "koinos:ed25519:SoF2CWVYloORYABiNzU_r2WPoS--MYwg1zGFkBMi5f8",
       "body": {
-        "digest": "957bc80e99b6a506ae0de3debbe3e31d72fd53678f94524eca974208cc78c1f1",
+        "digest": "beb5f152231ff488645b90f22909e451fc000b98effe25d3350db61b50a969eb",
         "parties": [
-          "koinos:ed25519:FVMx1X5vk6S7cD0qVlv4f5Vw4PmyyhtwO9sIEX5Z-mE",
-          "koinos:ed25519:n15KCiv3R1aGviqugqGBFOEgspvcHVxB0b5wVqzRKRA"
+          "koinos:ed25519:SoF2CWVYloORYABiNzU_r2WPoS--MYwg1zGFkBMi5f8",
+          "koinos:ed25519:FSjtopCZcfTtefwv7iuqVtSAOqhijDT8uX7ZvWFqaP0"
         ],
         "title": "Sandbox collaboration terms",
         "uri": "https://example.invalid/seed-catalogue/terms.txt"
       },
-      "id": "1e24cdd3d00e55a1ae054c0da6592d6e84bae0ddaef91afde825c8eef18c02eb",
+      "id": "8b4f4adfb03b64fb2e3d399c3f3b7acba5f687bf74673cdfc86dd8962814612a",
       "kind": "agreement.proposed",
-      "previous": "c855e08a4186a59764a8951faddb948bd5f20f30cd5a26666cc28298bcc9e786",
-      "project": "6494b842-1031-44fa-9e49-2b7575761e96",
+      "previous": "414f93702a4207b333fde7d2abe23af689887ae6bdc7946208bff585b58cf894",
+      "project": "61c8fc2d-e6b5-49ad-8c12-fe76536eb966",
       "protocol": "koinos/0.1",
       "sequence": 1,
-      "signature": "yXt5UBjf3gL3jjasX2-GQ0XYvVdhZkLsnpYshJLHy4KU1gV1olRVjXLx7tSvxJofFW2Z5uWKSEVTBkbQwVV7Cg",
+      "signature": "cRUIXUdA85mt5cWgaZBRYTFJPCW0oX-CdP0eNxZXq6IoiPR5SxYOpRqzvpwszx-0D1Su1k-2JIv8SND1523SDw",
       "time": "2026-01-01T12:00:01.000Z"
     },
     {
-      "actor": "koinos:ed25519:FVMx1X5vk6S7cD0qVlv4f5Vw4PmyyhtwO9sIEX5Z-mE",
+      "actor": "koinos:ed25519:SoF2CWVYloORYABiNzU_r2WPoS--MYwg1zGFkBMi5f8",
       "body": {
-        "agreement": "1e24cdd3d00e55a1ae054c0da6592d6e84bae0ddaef91afde825c8eef18c02eb"
+        "agreement": "8b4f4adfb03b64fb2e3d399c3f3b7acba5f687bf74673cdfc86dd8962814612a"
       },
-      "id": "83c2f8c757c345f7206805d6d73d745546b64da7029bc69b9eefe91b302504ad",
+      "id": "2af5bb916e020d9f6b709d0dce8ec9d8703fb175e25d5fc7699e00e3ac10d459",
       "kind": "agreement.consented",
-      "previous": "1e24cdd3d00e55a1ae054c0da6592d6e84bae0ddaef91afde825c8eef18c02eb",
-      "project": "6494b842-1031-44fa-9e49-2b7575761e96",
+      "previous": "8b4f4adfb03b64fb2e3d399c3f3b7acba5f687bf74673cdfc86dd8962814612a",
+      "project": "61c8fc2d-e6b5-49ad-8c12-fe76536eb966",
       "protocol": "koinos/0.1",
       "sequence": 2,
-      "signature": "__vdNYq-TY2vl7HJEdf4JRYIG_jXzVEX2RybI1m2FMKOIFo-VsGCtc2MhgeuKF2B9TKVZK0sBRAjzgp_jktdDw",
+      "signature": "mcGNbYRMZsM4OIgWVIlRQ7MygZh0_EXQa6jLRkwpeI-FnbeOIStztY3wgC-qK1w5pO2KOMuKIAkZPINXAoBOCA",
       "time": "2026-01-01T12:00:02.000Z"
     },
     {
-      "actor": "koinos:ed25519:n15KCiv3R1aGviqugqGBFOEgspvcHVxB0b5wVqzRKRA",
+      "actor": "koinos:ed25519:FSjtopCZcfTtefwv7iuqVtSAOqhijDT8uX7ZvWFqaP0",
       "body": {
-        "agreement": "1e24cdd3d00e55a1ae054c0da6592d6e84bae0ddaef91afde825c8eef18c02eb"
+        "agreement": "8b4f4adfb03b64fb2e3d399c3f3b7acba5f687bf74673cdfc86dd8962814612a"
       },
-      "id": "b8e358c7f9a8555f87a5a4700faff8b6ed04205d299879df997c8d06f5c1386d",
+      "id": "fbc53e3bfb887fca5bddaaaded5f18141e3445a764de6f6ae488e45c29d55702",
       "kind": "agreement.consented",
-      "previous": "83c2f8c757c345f7206805d6d73d745546b64da7029bc69b9eefe91b302504ad",
-      "project": "6494b842-1031-44fa-9e49-2b7575761e96",
+      "previous": "2af5bb916e020d9f6b709d0dce8ec9d8703fb175e25d5fc7699e00e3ac10d459",
+      "project": "61c8fc2d-e6b5-49ad-8c12-fe76536eb966",
       "protocol": "koinos/0.1",
       "sequence": 3,
-      "signature": "5xV_snkhIQr1o7FpuGgStxLhy4z0UVtU93X4huPDdHsJxVy_nkWImqDKmLP7b8qy_XJDCP0XTikZGThYN1tkDQ",
+      "signature": "YmbhigufyqAXGfiLysi_jXsimE4Kdp8OR9awqOByva7E2ZamTgprz2VJtUQAExUtU0mnJz96lGnZ5R2Lr98ZAg",
       "time": "2026-01-01T12:00:03.000Z"
     },
     {
-      "actor": "koinos:ed25519:FVMx1X5vk6S7cD0qVlv4f5Vw4PmyyhtwO9sIEX5Z-mE",
+      "actor": "koinos:ed25519:SoF2CWVYloORYABiNzU_r2WPoS--MYwg1zGFkBMi5f8",
       "body": {
-        "agent": "koinos:ed25519:CVLG0ROzxIiimpWJ6hVug-fcASLcUeRxmKwOHvqCAP4",
-        "agreement": "1e24cdd3d00e55a1ae054c0da6592d6e84bae0ddaef91afde825c8eef18c02eb",
+        "agent": "koinos:ed25519:AHdfxe6OuRxYZB0JlKfL6cL39cLzab4WnBUj3VD7pio",
+        "agreement": "8b4f4adfb03b64fb2e3d399c3f3b7acba5f687bf74673cdfc86dd8962814612a",
         "expires": "2027-01-01T00:00:00.000Z",
         "scope": [
           "contribution.submit"
         ]
       },
-      "id": "049afd3d7819468d7b939629ea1ed912e19e325052d98aeebd3e4a472a4d257a",
+      "id": "75a5c990bce89380be7bc2cbf5b2664e8b7f2440a25fe4b68b3b47bec20a51ac",
       "kind": "delegation.granted",
-      "previous": "b8e358c7f9a8555f87a5a4700faff8b6ed04205d299879df997c8d06f5c1386d",
-      "project": "6494b842-1031-44fa-9e49-2b7575761e96",
+      "previous": "fbc53e3bfb887fca5bddaaaded5f18141e3445a764de6f6ae488e45c29d55702",
+      "project": "61c8fc2d-e6b5-49ad-8c12-fe76536eb966",
       "protocol": "koinos/0.1",
       "sequence": 4,
-      "signature": "jO23jeYx3pSrQyGEDj9l5IViKR9OZLh656IsA_dtNil_F0oabT6hwFnTFSdZ32sUGPbG_seIm8gBNetkwTglCw",
+      "signature": "E_K08z_phKXez-N0Y2oB1SN7VK3nSUZmyRMcwvYwsaiakgYQmKXA2lP5yu8Ih_M62s1pLYp36s9UfBSlwcppBQ",
       "time": "2026-01-01T12:00:04.000Z"
     },
     {
-      "actor": "koinos:ed25519:CVLG0ROzxIiimpWJ6hVug-fcASLcUeRxmKwOHvqCAP4",
+      "actor": "koinos:ed25519:AHdfxe6OuRxYZB0JlKfL6cL39cLzab4WnBUj3VD7pio",
       "body": {
-        "agreement": "1e24cdd3d00e55a1ae054c0da6592d6e84bae0ddaef91afde825c8eef18c02eb",
+        "agreement": "8b4f4adfb03b64fb2e3d399c3f3b7acba5f687bf74673cdfc86dd8962814612a",
         "artifact": {
-          "digest": "1dde9996d4752b3bb542c47b479fe91ac461ffd0aa2d7438997ea6de896625e9",
+          "digest": "18e58a98733cd86872d83ff4281dca91c1263602dc72018a7c03c1f0c2e854ff",
           "uri": "https://example.invalid/seed-catalogue/schema.json"
         },
-        "delegation": "049afd3d7819468d7b939629ea1ed912e19e325052d98aeebd3e4a472a4d257a",
+        "delegation": "75a5c990bce89380be7bc2cbf5b2664e8b7f2440a25fe4b68b3b47bec20a51ac",
         "summary": "Fictional agent submission, independently reviewed before acceptance.",
         "title": "Searchable seed catalogue schema"
       },
-      "id": "de4f2413395237aecdff4bcc39a46be4a6a946e0df487e7c13364a891c094321",
+      "id": "8da689bfd781e14f3e1aa3f827e524a9876c21ec230276189861e7f0c8de1d7a",
       "kind": "contribution.submitted",
-      "previous": "049afd3d7819468d7b939629ea1ed912e19e325052d98aeebd3e4a472a4d257a",
-      "project": "6494b842-1031-44fa-9e49-2b7575761e96",
+      "previous": "75a5c990bce89380be7bc2cbf5b2664e8b7f2440a25fe4b68b3b47bec20a51ac",
+      "project": "61c8fc2d-e6b5-49ad-8c12-fe76536eb966",
       "protocol": "koinos/0.1",
       "sequence": 5,
-      "signature": "Nbdh9qS5ziH36NQQ8mhHd5Zm_5DVPfnpgep_z9tREt6lnqLOmg9kvVTz65PShS17kXJaWOS97Zi25kMyqmdZAA",
+      "signature": "LuOS425LxGvE-OAdWiJcDbqeuD2nlBAWTfUyBsTEG1Ax_9Psr7s4UUWqe3yBBmI7d8are-AWfWLZ-sKIXBLCBg",
       "time": "2026-01-01T12:00:05.000Z"
     },
     {
-      "actor": "koinos:ed25519:n15KCiv3R1aGviqugqGBFOEgspvcHVxB0b5wVqzRKRA",
+      "actor": "koinos:ed25519:FSjtopCZcfTtefwv7iuqVtSAOqhijDT8uX7ZvWFqaP0",
       "body": {
-        "contribution": "de4f2413395237aecdff4bcc39a46be4a6a946e0df487e7c13364a891c094321",
+        "contribution": "8da689bfd781e14f3e1aa3f827e524a9876c21ec230276189861e7f0c8de1d7a",
         "decision": "approve",
-        "note": "Sandbox review: schema covers the agreed fields; no artifact was fetched by this protocol."
+        "note": "Sandbox review: supplied schema requires id, commonName, scientificName and origin with region/source, rejects unknown fields and permits harvestYear/notes. Conformance checks the supplied evidence bytes; no URI was fetched."
       },
-      "id": "5ba57f25fbfded48c7fce3133d452aa99936d2679f956ee0f617c5afaeea27c2",
+      "id": "e2897e06dce09708871d5c3ece50cf727001acfc0f6b093b68a3913234bdf6e9",
       "kind": "contribution.reviewed",
-      "previous": "de4f2413395237aecdff4bcc39a46be4a6a946e0df487e7c13364a891c094321",
-      "project": "6494b842-1031-44fa-9e49-2b7575761e96",
+      "previous": "8da689bfd781e14f3e1aa3f827e524a9876c21ec230276189861e7f0c8de1d7a",
+      "project": "61c8fc2d-e6b5-49ad-8c12-fe76536eb966",
       "protocol": "koinos/0.1",
       "sequence": 6,
-      "signature": "vKZwhRCqYMuftalqIoZ5gBaLuY_FKeEvUc_b5ymS4DKQ959ghj8XChh5TBw-nUQO_FPp-ILMXb_o03ysq729BA",
+      "signature": "1jKoJjOPUGeCg7deljQQ-lQJg5r_TUiKIU1ED3YKb-3SiNc6ZRI8LoFf0WCHFKn1QrNydyVxkmegcS3yDJBUBA",
       "time": "2026-01-01T12:00:06.000Z"
     },
     {
-      "actor": "koinos:ed25519:FVMx1X5vk6S7cD0qVlv4f5Vw4PmyyhtwO9sIEX5Z-mE",
+      "actor": "koinos:ed25519:SoF2CWVYloORYABiNzU_r2WPoS--MYwg1zGFkBMi5f8",
       "body": {
-        "contribution": "de4f2413395237aecdff4bcc39a46be4a6a946e0df487e7c13364a891c094321",
-        "review": "5ba57f25fbfded48c7fce3133d452aa99936d2679f956ee0f617c5afaeea27c2"
+        "contribution": "8da689bfd781e14f3e1aa3f827e524a9876c21ec230276189861e7f0c8de1d7a",
+        "review": "e2897e06dce09708871d5c3ece50cf727001acfc0f6b093b68a3913234bdf6e9"
       },
-      "id": "1fb9b6247145abfdb6a219edebe792da7bc36f5d8c254fd3d39965d10c0f9101",
+      "id": "e36963dec412a771d5fdb2e97c896973e77b9b1ace5be2ea3bad312d5f3a52d8",
       "kind": "contribution.accepted",
-      "previous": "5ba57f25fbfded48c7fce3133d452aa99936d2679f956ee0f617c5afaeea27c2",
-      "project": "6494b842-1031-44fa-9e49-2b7575761e96",
+      "previous": "e2897e06dce09708871d5c3ece50cf727001acfc0f6b093b68a3913234bdf6e9",
+      "project": "61c8fc2d-e6b5-49ad-8c12-fe76536eb966",
       "protocol": "koinos/0.1",
       "sequence": 7,
-      "signature": "s0vCO-zTBj4gKoLNKyCyMOOo439d6WfvJ0y4WqEjH2AZFxvaEUl45D4X1bgc9f0gVtdaMKc_mWDXW99k5s_ZCg",
+      "signature": "CDGmu2TU0m5wruwcsj5Ucl2odPLRntmd5kJuMM0G5KcCuPTARo_861KHKLwTKKRAjVDZTti1OmLFz76NffDWBQ",
       "time": "2026-01-01T12:00:07.000Z"
     }
   ]

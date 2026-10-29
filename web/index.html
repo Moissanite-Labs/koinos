@@ -1,12 +1,131 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Koinos · Common ground</title><link rel="stylesheet" href="/style.css"><script type="module" src="/app.mjs"></script></head>
-<body><header><a class="wordmark" href="/">koinos<span> / </span></a><span>LOCAL WORKBENCH · PROTOCOL 0.1</span><button id="export" disabled>Export bundle ↗</button></header>
-<main><section class="intro"><div><p class="eyebrow">INDEPENDENT PEOPLE. SHARED WORK.</p><h1>Common ground.<br>Visible commitments.</h1><p class="lede">Trace work from agreement to acceptance. Carry the evidence with you.</p></div><aside class="sandbox"><p class="eyebrow">DEMONSTRATION SANDBOX</p><p>Every role is simulated. Ephemeral keys illustrate the workflow; these signatures are not real people's consent. Each load creates a fresh demonstration history.</p><label for="stage">Explore a point in the lifecycle</label><div class="row"><select id="stage"><option value="genesis">01 · Project created</option><option value="agreement">02 · Agreement proposed</option><option value="consent">03 · Consent recorded</option><option value="delegation">04 · Agent delegated</option><option value="submission">05 · Contribution submitted</option><option value="review">06 · Independently reviewed</option><option value="accepted" selected>07 · Contribution accepted</option><option value="disputed">08 · Acceptance disputed</option><option value="revoked">Alternative · Grant revoked</option></select><button id="demo">Load stage →</button></div></aside></section>
-<section class="toolbar"><div><label class="import" for="file">＋ Import a complete bundle</label><input id="file" type="file" accept=".json,application/json"><small>Local inspection · 2 MiB maximum</small></div><div id="verification" role="status" aria-live="polite">Loading demonstration…</div></section>
-<div id="error" role="alert" hidden></div><section id="workspace" hidden><div class="project"><div><p class="eyebrow">PROJECT / <span id="project-id"></span></p><h2 id="title"></h2><p id="description"></p></div><div class="metric"><strong id="count"></strong><span>signed receipts</span></div></div>
-<nav aria-label="Workbench sections"><button data-tab="overview" aria-selected="true">Overview</button><button data-tab="agreements">Agreements & authority</button><button data-tab="contributions">Contributions</button><button data-tab="receipts">Receipt ledger</button></nav>
-<section id="overview" class="panel"><div class="section-title"><h3>People & agents</h3><span>Declared identities, not verified personhood</span></div><div id="participants" class="cards"></div><div class="note">A signature establishes control of a key. It does not establish identity, truth, ownership, payment, or legal effect.</div></section>
-<section id="agreements" class="panel" hidden><h3>Agreements & explicit consent</h3><div id="agreements-list" class="cards"></div><h3>Scoped delegation</h3><div id="delegations" class="cards"></div></section>
-<section id="contributions" class="panel" hidden><h3>Work, review & acceptance</h3><div id="contribution-list"></div></section>
-<section id="receipts" class="panel" hidden><div class="section-title"><h3>Ordered, signed evidence</h3><label>Filter <select id="filter"><option value="">All records</option></select></label></div><p>Inspect exact signed envelopes. Timestamps are assertions by signers. A valid chain cannot establish that this is the newest history.</p><div id="ledger"></div></section>
-</section><footer><span>KOINOS / AN EXPERIMENT IN PORTABLE COOPERATION</span><p>Bundles expose every included record. Artifact and terms links are references; their contents are not fetched or verified. No agents or payments are executed.</p></footer></main></body></html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Koinos · Common ground</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script type="module" src="/app.mjs"></script>
+  </head>
+  <body>
+    <header>
+      <a class="wordmark" href="/">koinos<span> / </span></a
+      ><span>LOCAL WORKBENCH · PROTOCOL 0.1</span
+      ><button id="export" disabled>Export bundle ↗</button>
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">INDEPENDENT PEOPLE. SHARED WORK.</p>
+          <h1>Common ground.<br />Visible commitments.</h1>
+          <p class="lede">
+            Trace work from agreement to acceptance. Carry the evidence with
+            you.
+          </p>
+        </div>
+        <aside class="sandbox">
+          <p class="eyebrow">DEMONSTRATION SANDBOX</p>
+          <p>
+            Every role is simulated. Ephemeral keys illustrate the workflow;
+            these signatures are not real people's consent. Each load creates a
+            fresh demonstration history.
+          </p>
+          <label for="stage">Explore a point in the lifecycle</label>
+          <div class="row">
+            <select id="stage">
+              <option value="genesis">01 · Project created</option>
+              <option value="agreement">02 · Agreement proposed</option>
+              <option value="consent">03 · Consent recorded</option>
+              <option value="delegation">04 · Agent delegated</option>
+              <option value="submission">05 · Contribution submitted</option>
+              <option value="review">06 · Independently reviewed</option>
+              <option value="accepted" selected>
+                07 · Contribution accepted
+              </option>
+              <option value="disputed">08 · Acceptance disputed</option>
+              <option value="revoked">
+                Alternative · Grant revoked
+              </option></select
+            ><button id="demo">Load stage →</button>
+          </div>
+        </aside>
+      </section>
+      <section class="toolbar">
+        <div>
+          <label class="import" for="file">＋ Import a complete bundle</label
+          ><input id="file" type="file" accept=".json,application/json" /><small
+            >Local inspection · 2 MiB maximum</small
+          >
+        </div>
+        <div id="verification" role="status" aria-live="polite">
+          Loading demonstration…
+        </div>
+      </section>
+      <div id="error" role="alert" hidden></div>
+      <section id="workspace" hidden>
+        <div class="project">
+          <div>
+            <p class="eyebrow">PROJECT / <span id="project-id"></span></p>
+            <h2 id="title"></h2>
+            <p id="description"></p>
+          </div>
+          <div class="metric">
+            <strong id="count"></strong><span>signed receipts</span>
+          </div>
+        </div>
+        <nav aria-label="Workbench sections">
+          <button data-tab="overview" aria-selected="true">Overview</button
+          ><button data-tab="agreements">Agreements & authority</button
+          ><button data-tab="contributions">Contributions</button
+          ><button data-tab="receipts">Receipt ledger</button>
+        </nav>
+        <section id="overview" class="panel">
+          <div class="section-title">
+            <h3>People & agents</h3>
+            <span>Declared identities, not verified personhood</span>
+          </div>
+          <div id="participants" class="cards"></div>
+          <div class="note">
+            A signature establishes control of a key. It does not establish
+            identity, truth, ownership, payment, or legal effect.
+          </div>
+        </section>
+        <section id="agreements" class="panel" hidden>
+          <h3>Agreements & explicit consent</h3>
+          <div id="agreements-list" class="cards"></div>
+          <h3>Scoped delegation</h3>
+          <div id="delegations" class="cards"></div>
+        </section>
+        <section id="contributions" class="panel" hidden>
+          <h3>Work, review & acceptance</h3>
+          <div id="contribution-list"></div>
+        </section>
+        <section id="receipts" class="panel" hidden>
+          <div class="section-title">
+            <h3>Ordered, signed evidence</h3>
+            <label
+              >Filter
+              <select id="filter">
+                <option value="">All records</option>
+              </select></label
+            >
+          </div>
+          <p>
+            Inspect exact signed envelopes. Timestamps are assertions by
+            signers. A valid chain cannot establish that this is the newest
+            history.
+          </p>
+          <div id="ledger"></div>
+        </section>
+      </section>
+      <footer>
+        <span>KOINOS / AN EXPERIMENT IN PORTABLE COOPERATION</span>
+        <p>
+          Bundles expose every included record. Artifact and terms links are
+          references; their contents are not fetched or verified. No agents or
+          payments are executed.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
