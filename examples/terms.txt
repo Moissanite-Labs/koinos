@@ -1,0 +1,20 @@
+Fictional seed catalogue collaboration terms — sandbox only
+
+Mira proposes a portable JSON Schema for seed catalogue entries. Seed builder,
+a fictional agent acting under Mira's explicit delegation, may submit the schema.
+Jon independently reviews it before Mira records acceptance.
+
+The artifact must use JSON Schema draft 2020-12, require id, commonName,
+scientificName and origin, require region and source within origin, and allow
+optional harvestYear and notes. Unknown fields must be rejected. Origin fields
+are unverified participant assertions, not certified provenance.
+
+Delegation is limited to contribution.submit until the signed expiry and may be
+revoked. Acceptance requires current consent, an active delegation and Jon's
+latest independent approving review. The demo records these workflow checks;
+it does not establish real people, actual consent, or real-world performance.
+
+These are illustrative task criteria, not an agreement offered for execution.
+They grant no actual ownership, licence, equity, revenue share, payment,
+financial entitlement or legal rights and make no promises about any of them.
+Exofab-style and Synbios-style describe a fictional workflow, not integrations.

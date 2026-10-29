@@ -1,0 +1,4 @@
+* text=auto eol=lf
+# These exact bytes are committed to by the signed example bundle.
+examples/terms.txt -text
+examples/seed-catalogue.schema.json -text
