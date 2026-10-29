@@ -1,5 +1,7 @@
 # Architecture
 
+This page describes the original ordered 0.1 reference. The [open 0.2 graph](open-protocol.md) removes the membership gate and single sequence; [economic contracts](economics/contracts.md) add explicit ownership and revenue enforcement. Both formats remain supported. A signed graph claim or settlement locator does not automatically become a verified contract award.
+
 Koinos separates portable collaboration records from the tools that create and read them. This reference uses files so a project can be copied, checked, and inspected without a hosted service.
 
 ```mermaid

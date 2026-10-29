@@ -1,0 +1,192 @@
+{
+  "format": "koinos-open/0.2",
+  "records": [
+    {
+      "actor": "koinos:ed25519:Sa1hZC3x1pRjkjnh1h64LwdewlYkpxrAK1yavW3lpQM",
+      "body": {
+        "name": "Mira (local sandbox)",
+        "needs": [
+          "schema engineering"
+        ],
+        "role": "creator",
+        "skills": [
+          "catalogue design"
+        ],
+        "statement": "Fictional local execution; no real people, consent or legal equity."
+      },
+      "id": "01c9c909617d5bd3462caae4d885762d88f8f8380c52572ece89084846ba2fdc",
+      "kind": "profile.published",
+      "parents": [],
+      "protocol": "koinos-open/0.2",
+      "signature": "APO19IgFYYZ6kbpQahRi9KIEMbW7OsonRKV_n2tAzW1iaeS7Rna3FsTFcgwgmoji2iFaSwsxhEbAtUq4SVnbAA",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:3IxTJ6bkRhPlGZt_W7ZXrL31uCzxAaAVLTBA9U-1e3I",
+      "body": {
+        "name": "Seed builder (local sandbox)",
+        "needs": [
+          "catalogue design"
+        ],
+        "role": "agent builder",
+        "skills": [
+          "schema engineering"
+        ],
+        "statement": "Fictional agent key; explicit EVM delegation is separate from this profile."
+      },
+      "id": "c792f50046033004dea09f6f515b4e38554a42fda0b9f3c7b2f19a3479576db8",
+      "kind": "profile.published",
+      "parents": [
+        "01c9c909617d5bd3462caae4d885762d88f8f8380c52572ece89084846ba2fdc"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "aFzmSqzi2rnezVdKbL3aLpKz01lSPfpFDTZxL-q5Mtto-T_BMm6zeNE5x7ZxfgTJ0Gbrqk-M9J_9GglrQwFJCw",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:Sa1hZC3x1pRjkjnh1h64LwdewlYkpxrAK1yavW3lpQM",
+      "body": {
+        "opportunity": null,
+        "originator": "01c9c909617d5bd3462caae4d885762d88f8f8380c52572ece89084846ba2fdc",
+        "policy": "Local educational one-task hash-preimage predicate. One percent post-mint award rounded up; fixed caps; no source fee; no human-quality claim.",
+        "source": null,
+        "terms": {
+          "digest": "beb5f152231ff488645b90f22909e451fc000b98effe25d3350db61b50a969eb",
+          "uri": "https://example.invalid/seed-catalogue/terms.txt"
+        },
+        "title": "Common catalogue infrastructure"
+      },
+      "id": "df6c8f3ef41318f9644976fa198dac09d82bce4d0c039eb1459c5904d7a60f21",
+      "kind": "project.created",
+      "parents": [
+        "c792f50046033004dea09f6f515b4e38554a42fda0b9f3c7b2f19a3479576db8"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "7VPSlsmTAqDhDquMmYEsymDpvz0bTgGidOrjTocn30FWHmzA_ViBnru6fUVDMIZ4z6-gETpmNaSdwx5wMoqVDg",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:Sa1hZC3x1pRjkjnh1h64LwdewlYkpxrAK1yavW3lpQM",
+      "body": {
+        "opportunity": null,
+        "originator": "01c9c909617d5bd3462caae4d885762d88f8f8380c52572ece89084846ba2fdc",
+        "policy": "Fictional local branch. Primary quorum 0x4D17b728F3E78e62Ac86D585bE00738Eae7528C6; disjoint appeal quorum 0x9959EFF900eDC4103CE1730815DC4514a292163A. Two approvals from each configured quorum; 60-second settlement delay; 120-second timeout; 50 smallest-unit challenge bond. One percent post-mint mint with ceiling; maximum supply 1000000; single award cap 100000; award count cap 100. Twenty percent of funded receipts to the source project, eighty percent to branch holders. No net-profit, real payment, personhood or legal-equity claim.",
+        "source": "df6c8f3ef41318f9644976fa198dac09d82bce4d0c039eb1459c5904d7a60f21",
+        "terms": {
+          "digest": "beb5f152231ff488645b90f22909e451fc000b98effe25d3350db61b50a969eb",
+          "uri": "https://example.invalid/seed-catalogue/terms.txt"
+        },
+        "title": "Regional seed marketplace"
+      },
+      "id": "49d32fd1ecea044825c3d7f2e30d1ff5764d8f95aa42551e1a544d0355c44699",
+      "kind": "project.created",
+      "parents": [
+        "df6c8f3ef41318f9644976fa198dac09d82bce4d0c039eb1459c5904d7a60f21"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "ba4jsamIdwLF18Wwd_5HDZGDt3g-KuFm_ZlIXBDgi7iCilk9TzICU8RI9vAEfXzHLW6Qeo2XTvYEEHZDzHlLBA",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:Sa1hZC3x1pRjkjnh1h64LwdewlYkpxrAK1yavW3lpQM",
+      "body": {
+        "credit": [
+          {
+            "actor": "koinos:ed25519:3IxTJ6bkRhPlGZt_W7ZXrL31uCzxAaAVLTBA9U-1e3I",
+            "weight": 5000
+          },
+          {
+            "actor": "koinos:ed25519:Sa1hZC3x1pRjkjnh1h64LwdewlYkpxrAK1yavW3lpQM",
+            "weight": 5000
+          }
+        ],
+        "evidence": {
+          "digest": "18e58a98733cd86872d83ff4281dca91c1263602dc72018a7c03c1f0c2e854ff",
+          "uri": "https://example.invalid/seed-catalogue/schema.json"
+        },
+        "project": "49d32fd1ecea044825c3d7f2e30d1ff5764d8f95aa42551e1a544d0355c44699",
+        "references": [],
+        "title": "Schema for regional seed catalogue entries"
+      },
+      "id": "9d3e149a0dd885164be9e62a9fb9443c8ce51ec5ff7650e0cb52797149b96b79",
+      "kind": "contribution.claimed",
+      "parents": [
+        "49d32fd1ecea044825c3d7f2e30d1ff5764d8f95aa42551e1a544d0355c44699"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "aFTnpxLF2clEqUCmfxfABR5oFQ4qnvDJKWXZK24VYLMQsRzcbgweSqtUbAB_rBIObvsXjXQc9Q5_YroUqTPPCg",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:Sa1hZC3x1pRjkjnh1h64LwdewlYkpxrAK1yavW3lpQM",
+      "body": {
+        "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "chainId": 31337,
+        "project": "49d32fd1ecea044825c3d7f2e30d1ff5764d8f95aa42551e1a544d0355c44699"
+      },
+      "id": "75f11dbac77aac81869f505a41ec0ff86c56dd0d63c198ba5b3049ea03654582",
+      "kind": "wallet.bound",
+      "parents": [
+        "9d3e149a0dd885164be9e62a9fb9443c8ce51ec5ff7650e0cb52797149b96b79"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "P0yw7a4AlLGBuvKtA5-B_wJub0uHaMcKD9LEY7k5IuUGJiHzDeDCJTyzi7dlfuIqao-655QA0ozdlGJm-DZADw",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:3IxTJ6bkRhPlGZt_W7ZXrL31uCzxAaAVLTBA9U-1e3I",
+      "body": {
+        "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+        "chainId": 31337,
+        "project": "49d32fd1ecea044825c3d7f2e30d1ff5764d8f95aa42551e1a544d0355c44699"
+      },
+      "id": "5369b449ac1fcb37bfbf2c3a0809fc0e0cf00f2444180f70ba320d4ff6d19071",
+      "kind": "wallet.bound",
+      "parents": [
+        "75f11dbac77aac81869f505a41ec0ff86c56dd0d63c198ba5b3049ea03654582"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "26ZzMrL2rETUSHnhPaMFOPF3dslel9GhShiUzshTo4J5YJdS5AbeqAbft2wnAEFz7w9oEqZCPX8PA_G0EnASAg",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:Sa1hZC3x1pRjkjnh1h64LwdewlYkpxrAK1yavW3lpQM",
+      "body": {
+        "bindings": [
+          "5369b449ac1fcb37bfbf2c3a0809fc0e0cf00f2444180f70ba320d4ff6d19071",
+          "75f11dbac77aac81869f505a41ec0ff86c56dd0d63c198ba5b3049ea03654582"
+        ],
+        "chainId": 31337,
+        "contract": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+        "contribution": "9d3e149a0dd885164be9e62a9fb9443c8ce51ec5ff7650e0cb52797149b96b79",
+        "project": "49d32fd1ecea044825c3d7f2e30d1ff5764d8f95aa42551e1a544d0355c44699"
+      },
+      "id": "6727c2cc74bc71cc3202840a1116f4c8ec1d75e9c406f65c7bcb5f389193a96e",
+      "kind": "settlement.intent",
+      "parents": [
+        "5369b449ac1fcb37bfbf2c3a0809fc0e0cf00f2444180f70ba320d4ff6d19071"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "JQl0TQAZSpOUhcxiKH8Anll73a9sV4LQsHO1JiDFXwJlT9YRtOdtjDfdgrdMeJF0glvXdAqJu_MYqNt55ZB8Dg",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:Sa1hZC3x1pRjkjnh1h64LwdewlYkpxrAK1yavW3lpQM",
+      "body": {
+        "chainId": 31337,
+        "contract": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+        "contribution": "9d3e149a0dd885164be9e62a9fb9443c8ce51ec5ff7650e0cb52797149b96b79",
+        "project": "49d32fd1ecea044825c3d7f2e30d1ff5764d8f95aa42551e1a544d0355c44699",
+        "transaction": "0xc036fee83f8dbc3dcf31297368ca6c20784dfb8e022a2569a039b846b9e81550"
+      },
+      "id": "93f90d05faf9875087a81e0a3584fe4da20a111deb7b8c26e29fe7b386acaf75",
+      "kind": "settlement.referenced",
+      "parents": [
+        "6727c2cc74bc71cc3202840a1116f4c8ec1d75e9c406f65c7bcb5f389193a96e"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "xL2XiGHUJMhKRcZPx2CyvZkIPKur0fxX3PjSDy72aEY25Dv7Cddum50DMXY6WH1tSLandTWpsznk5Znog8pOBw",
+      "time": "2026-10-29T12:00:00.000Z"
+    }
+  ]
+}

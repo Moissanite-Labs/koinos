@@ -11,6 +11,7 @@ import {
   readTextFile,
 } from "./store.mjs";
 import { createDemo } from "./demo.mjs";
+import { openMain, openHelp } from "./open-cli.mjs";
 
 const help = `Koinos experimental local reference (Node.js 22+)\nUsage:\n  koinos keygen KEY.pem\n  koinos create STORE KEY.pem BODY.json\n  koinos append STORE KEY.pem KIND BODY.json\n  koinos inspect STORE\n  koinos verify STORE [EXPECTED_HEAD] [EXPECTED_PROJECT]\n  koinos pin STORE\n  koinos import STORE BUNDLE.json\n  koinos export STORE OUTPUT.json\n  koinos demo OUTPUT.json\nPrivate keys are written exclusively with mode 600. Body files are JSON.\nExports expose every record. Preserve the pin separately to detect replacement.\n`;
 const json = readJsonFile;
@@ -34,7 +35,11 @@ export async function main(args = process.argv.slice(2)) {
       throw new Error(`Invalid arguments for ${command}. Use --help.`);
   };
   if (!command || command === "--help" || command === "help") {
-    output(help);
+    output(help + "\n" + openHelp);
+    return;
+  }
+  if (command === "open") {
+    await openMain(rest);
     return;
   }
   if (command === "keygen") {

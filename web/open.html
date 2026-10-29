@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Koinos / Open work</title>
+    <link rel="stylesheet" href="/open.css" />
+    <script type="module" src="/open.mjs"></script>
+  </head>
+  <body>
+    <header>
+      <a href="/open" class="brand">koinos /</a
+      ><span class="edition">OPEN COLLABORATION LAB · 0.2</span
+      ><a href="/">Ordered reference ↗</a>
+    </header>
+    <main>
+      <section class="heading">
+        <div>
+          <p class="eyebrow">COMMON INFRASTRUCTURE. INDEPENDENT INITIATIVE.</p>
+          <h1>Find your part.<br />Keep your credit.</h1>
+          <p>Open work, inspectable judgments, and explicit economic rules.</p>
+        </div>
+        <div class="summary">
+          <strong id="record-count">—</strong
+          ><span>signed records<br />in a mergeable graph</span>
+        </div>
+      </section>
+      <div class="notice">
+        Local, fictional sandbox. Keys establish authorship, not unique people.
+        Claims and reviews are not earned tokens. No live chain, payments, legal
+        equity, or production deployment.
+      </div>
+      <section class="operations" aria-label="Bundle controls">
+        <button id="reset">Load example</button
+        ><label class="file-button"
+          >Import bundle<input
+            id="import"
+            type="file"
+            accept="application/json,.json" /></label
+        ><label class="file-button"
+          >Merge bundle<input
+            id="merge"
+            type="file"
+            accept="application/json,.json" /></label
+        ><button id="export" disabled>Export graph ↗</button
+        ><span id="status" role="status" aria-live="polite">Loading…</span>
+      </section>
+      <div id="error" role="alert" hidden></div>
+      <nav aria-label="Open workbench">
+        <button data-view="discover" aria-pressed="true">01 / Discover</button
+        ><button data-view="projects" aria-pressed="false">
+          02 / Projects & teams</button
+        ><button data-view="credit" aria-pressed="false">
+          03 / Credit & evidence</button
+        ><button data-view="economics" aria-pressed="false">
+          04 / Ownership lab</button
+        ><button data-view="receipts" aria-pressed="false">
+          05 / Receipts
+        </button>
+      </nav>
+      <div id="verified" hidden>
+        <section id="discover" class="view">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">A PLACE TO START</p>
+              <h2>Problems meet capabilities.</h2>
+            </div>
+            <label
+              >Match a declared profile<select id="profile">
+                <option value="">All opportunities</option>
+              </select></label
+            >
+          </div>
+          <p class="muted">
+            Matches explain skill and need overlap. No identity ranking,
+            reputation score, or promise of work.
+          </p>
+          <div id="opportunities" class="grid"></div>
+          <h3>Independent participants</h3>
+          <div id="profiles" class="grid"></div>
+        </section>
+        <section id="projects" class="view" hidden>
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">FORM AROUND THE WORK</p>
+              <h2>Shared purpose. Separate projects.</h2>
+            </div>
+          </div>
+          <p class="muted">
+            Source infrastructure and specialized branches keep separate credits
+            and token instances. A contributor can earn in both; registering
+            another key earns nothing.
+          </p>
+          <div id="project-list"></div>
+        </section>
+        <section id="credit" class="view" hidden>
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">ATTRIBUTION WITHOUT ERASURE</p>
+              <h2>A register, not a popularity contest.</h2>
+            </div>
+            <label>Project<select id="credit-project"></select></label>
+          </div>
+          <div id="graph" aria-label="Contribution dependency graph"></div>
+          <p class="muted">
+            Arrows connect cited prior work. Conflicting judgments remain
+            visible. Favorable review counts never automatically authorize an
+            award.
+          </p>
+          <div id="claims"></div>
+          <section class="compose">
+            <div>
+              <p class="eyebrow">TRY OPEN PARTICIPATION</p>
+              <h3>Sign a fictional contribution claim.</h3>
+              <p>
+                A browser-generated session key signs your claim. The private
+                key stays in this page and disappears on reload. This records
+                proposed credit only.
+              </p>
+            </div>
+            <form id="claim-form">
+              <label>Project<select id="claim-project" required></select></label
+              ><label
+                >Build on a claim in this project (optional)<select
+                  id="claim-reference"
+                >
+                  <option value="">No cited prior claim</option>
+                </select></label
+              ><label
+                >Sandbox display name<input
+                  id="claim-name"
+                  value="Guest builder"
+                  maxlength="80"
+                  required /></label
+              ><label
+                >Contribution title<input
+                  id="claim-title"
+                  value="Accessible catalogue search"
+                  maxlength="200"
+                  required /></label
+              ><label
+                >Evidence text (hashed locally)<textarea
+                  id="claim-evidence"
+                  maxlength="10000"
+                  required
+                >
+A fictional implementation note for keyboard-accessible search.</textarea></label
+              ><label
+                >Evidence reference URL<input
+                  id="claim-uri"
+                  type="url"
+                  value="https://example.invalid/my-sandbox-evidence"
+                  required /></label
+              ><button type="submit">Sign & add claim →</button
+              ><span id="claim-status" role="status"></span>
+            </form>
+          </section>
+        </section>
+        <section id="economics" class="view" hidden>
+          <p class="eyebrow">ILLUSTRATIVE ECONOMICS / EXACT INTEGER UNITS</p>
+          <h2>New credit changes the cap table.</h2>
+          <p class="muted">
+            This editable projection does not mint tokens. The one-percent
+            scenario is configurable, not a promise of fairness. Earned credit
+            is cumulative; transferable ownership may move; accrued revenue is
+            separate.
+          </p>
+          <div class="economic-grid">
+            <form id="simulator">
+              <label
+                >Initial branch token units<input
+                  id="supply"
+                  value="1000000"
+                  inputmode="numeric"
+                  required /></label
+              ><label
+                >Initial source token units<input
+                  id="source-supply"
+                  value="2000000"
+                  inputmode="numeric"
+                  required /></label
+              ><label
+                >New source contribution awards (0–100)<input
+                  id="source-awards"
+                  value="2"
+                  inputmode="numeric"
+                  required /></label
+              ><label
+                >Award rate in basis points (100 = 1%)<input
+                  id="rate"
+                  value="100"
+                  inputmode="numeric"
+                  required /></label
+              ><label
+                >New contribution awards (0–100)<input
+                  id="awards"
+                  value="5"
+                  inputmode="numeric"
+                  required /></label
+              ><label
+                >Funded revenue units<input
+                  id="revenue"
+                  value="100000"
+                  inputmode="numeric"
+                  required /></label
+              ><label
+                >Fee to source holders (basis points)<input
+                  id="fee"
+                  value="1000"
+                  inputmode="numeric"
+                  required /></label
+              ><button type="submit">Recalculate scenario →</button>
+            </form>
+            <div id="simulation" aria-live="polite"></div>
+          </div>
+          <details>
+            <summary>Acceptance policies: who or what can decide?</summary>
+            <p>
+              Objective verifier: an immutable on-chain educational
+              hash-preimage predicate can decide a narrowly defined proof. It
+              does not verify software quality or omitted contributors.
+            </p>
+            <p>
+              Reviewer quorum: explicitly trusted signers attest to exact work
+              and terms. A model judgment is evidence, not independent
+              permission to transfer assets. Collusion, censorship and identity
+              assumptions remain.
+            </p>
+            <p>
+              Each contract pins its terms, verifier, reward policy and bounds.
+              Policy changes need a new opted-into instance. Token balances
+              enforce entitlements in that instance; they do not establish legal
+              equity.
+            </p>
+          </details>
+          <div class="section-title">
+            <h3>Local EVM execution evidence</h3>
+            <button id="report-load">Inspect local report</button>
+          </div>
+          <p class="muted">
+            A separately executed local test report, when generated. It is not a
+            live chain connection or your balance.
+          </p>
+          <div id="report" role="status"></div>
+        </section>
+        <section id="receipts" class="view" hidden>
+          <div class="section-title">
+            <h2>Inspect the signed graph.</h2>
+            <label
+              >Record kind<select id="receipt-kind">
+                <option value="">All kinds</option>
+              </select></label
+            >
+          </div>
+          <p id="heads" class="mono"></p>
+          <div id="receipt-list"></div>
+        </section>
+      </div>
+      <footer>
+        <span>KOINOS / PORTABLE COOPERATION</span>
+        <p>
+          Complete bundles expose all included records. Evidence and terms
+          references are not fetched. Historical signatures do not prove the
+          newest graph, personhood, truth, or legal rights.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>

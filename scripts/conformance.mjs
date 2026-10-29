@@ -101,3 +101,35 @@ assert.throws(() =>
 console.log(
   `Conformance passed: ${bundle.records.length} independent hash/signature checks; 2 supplied evidence digests and schema criteria; ${Object.keys(mutations).length + 1} rejection checks. Experimental fixture, no live integrations.`,
 );
+
+const { verifyOpenBundle, mergeOpenBundles, exportConsentedFeedback } =
+  await import("../src/open-protocol.mjs");
+const { verifyOpenCrypto } = await import("../web/open-crypto.mjs");
+const openBundle = JSON.parse(
+  await readFile(
+    new URL("../examples/open-collaboration.json", import.meta.url),
+    "utf8",
+  ),
+);
+const openState = verifyOpenBundle(openBundle);
+assert.equal((await verifyOpenCrypto(openBundle)).count, openState.count);
+const reversed = { ...openBundle, records: [...openBundle.records].reverse() };
+assert.deepEqual(verifyOpenBundle(reversed), openState);
+assert.deepEqual(
+  mergeOpenBundles(openBundle, reversed),
+  mergeOpenBundles(reversed, openBundle),
+);
+const tampered = structuredClone(openBundle);
+tampered.records[0].body.name = "Altered";
+assert.throws(() => verifyOpenBundle(tampered));
+await assert.rejects(verifyOpenCrypto(tampered));
+const feedback = exportConsentedFeedback(openBundle, "evaluation");
+assert.ok(feedback.feedback.length > 0);
+assert.doesNotMatch(
+  JSON.stringify(feedback),
+  /https?:|PRIVATE KEY|koinos:ed25519:/,
+);
+assert.ok(openState.contributions.every((c) => c.settlementVerified === false));
+console.log(
+  `Open conformance passed: ${openState.count} independent browser signature checks, deterministic concurrent merge, tamper rejection, explicit feedback consent and unverified settlement labels.`,
+);

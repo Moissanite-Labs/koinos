@@ -1,0 +1,60 @@
+# Permissionless collaboration records, 0.2
+
+The open reference extends, and does not replace, the ordered 0.1 format. Anyone with an Ed25519 key can publish a profile, opportunity, project, work claim, review or dispute. There is no member registry or steward approval gate. A signature proves key control; it does not prove personhood, skill, truth, legal identity or earned value. Creating additional keys earns nothing.
+
+## Signed graph and API
+
+`koinos-open/0.2` bundles contain exactly `format` and a nonempty `records` array. Each record contains exactly `protocol`, `actor`, `kind`, `body`, `time`, `parents`, `id` and `signature`. Actor encoding and canonical JSON follow [0.1](protocol.md), including safe integers, malformed-Unicode rejection, prototype-sensitive key rejection and unpadded canonical base64url. The id is SHA-256 of canonical unsigned fields. Ed25519 signs `koinos-open/0.2`, newline and the id. Signatures are not interchangeable with 0.1 signatures.
+
+Parents are sorted unique record hashes. Multiple roots and heads are valid. Every semantic reference must name an actual ancestor, not merely a record supplied elsewhere in a bundle. Timestamps are canonical UTC strings, never earlier than a parent. They remain untrusted signed assertions. Verification rejects unsupported fields and versions, bad signatures, missing parents, duplicates, cycles, invalid bodies and cross-project work references. Input order is immaterial. Canonical output uses Kahn topological order with lexicographic record-id tie breaking. It retains conflicting reviews, claims and consent events.
+
+The API is `createOpenRecord({records,identity,kind,body,parents?,time?})`, `createOpenBundle(records)`, `verifyOpenBundle(bundle)`, `mergeOpenBundles(...bundles)`, `matchOpportunities(bundle,profileId)` and `exportConsentedFeedback(bundle,purpose)`. Record creation defaults parents to all current heads; callers can explicitly select other known parents for concurrent work. Merge takes complete verified bundles, deduplicates identical records by id, rejects altered duplicates and returns deterministic complete output. There is no last-writer-wins deletion, economic reconciliation or automatic consensus. `createOpenDemo()` in `src/open-demo.mjs` returns a public sandbox bundle only; generated signing keys are discarded.
+
+Projection contains `format`, `profiles`, `opportunities`, `projects`, `contributions`, `reviews`, `disputes`, `consents`, `settlements`, `heads` and `count`. Entries contain signed body fields plus `id`, `actor` and `time`. The projection is detached from caller-owned input. It makes no network requests and executes no agent, artifact or payment.
+
+## Strict event bodies
+
+| Kind | Exact body fields |
+| --- | --- |
+| `profile.published` | `name`, `skills` string array, `needs` string array, `role`, `statement` |
+| `opportunity.published` | `title`, `problem`, `seeks` string array, `offers` string array, `criteria`, `terms:{uri,digest}` |
+| `project.created` | `title`, `opportunity` id or null, `originator` profile id, `policy`, `terms:{uri,digest}`, `source` project id or null |
+| `contribution.claimed` | `project`, `title`, `evidence:{uri,digest}`, `references` sorted prior contribution ids, `credit:[{actor,weight}]` |
+| `contribution.reviewed` | `project`, `contribution`, `criteriaDigest`, `decision`, `rationale`, `reviewerType`, `model` |
+| `contribution.disputed` | `project`, `target` contribution or review id, `reason` |
+| `feedback.consented` | `contribution`, `purposes`, `action` |
+| `settlement.referenced` | `project`, `contribution`, `chainId`, `contract`, `transaction` |
+
+Profiles describe only their signer; there is no field to update another key's profile. Multiple profiles from one key remain separate recorded assertions. A project's originator profile must belong to its signer. The source reference links separate project credit registers; source work does not silently become branch work. A person may claim work in both. Project policies and terms are immutable descriptions bound by digest, not code-enforced financial rules.
+
+A contribution's proposed credit contains unique lexicographically sorted Ed25519 actor ids and positive integer basis-point weights summing to 10,000. It does not mint anything, detect plagiarism, prove omitted contributors were credited, or establish beneficiaries' agreement. References name work in the same project; cross-project source provenance is represented by the project's source link, not by combining credit registers.
+
+Review decisions are `approve`, `request_changes` or `reject`. `reviewerType` is `human` or `model`; human reviews require null model metadata, model reviews require `{name,version}`. These are declarations. Criteria digest and exact contribution hash bind the review; neither is proof that the declared criteria were actually applied. A signer who authored the contribution or appears in its credit plan is labelled non-independent. Other signers are independent **of the recorded keys only**; the system cannot detect shared control or collusion. All review decisions, model metadata and disputes remain visible. A project originator has no special right to erase or veto another actor's work.
+
+`creditStatus` is `proposed`, `attested` (one or more signed reviews, regardless of verdict), `disputed`, or `settlement-reference`. Dispute takes display precedence, followed by settlement reference and attestation. Status is a record category, never automatically accepted credit. Contributions expose their reviews, disputes, settlements and independent-review count; counting reviews does not confer value. `settlementVerified` is always false here.
+
+Settlement fields are a positive safe-integer chain id, a 20-byte hex contract address and a 32-byte hex transaction hash. Every settlement entry is explicitly `status: "unverified"`. Anyone can sign a fabricated locator. JSON reports, receipt fields and signatures do not prove on-chain execution, finality, successful contract policy evaluation, matching evidence, or entitlement. Independent chain verification must check chain, contract code/policy, transaction success, exact contribution/evidence bindings and emitted events before making a separate execution claim. The DAG never updates token balances from these references.
+
+## Matching and feedback consent
+
+Matching compares a selected profile's declared skills with opportunity seeks, and its declared needs with opportunity offers. Tags are NFKC normalized, trimmed, lowercased and deduplicated. Score is the number of overlapping tags. Results show exact overlaps and sort by score, then opportunity id. There is no identity, wealth, popularity or model ranking. Matches are suggestions based on unverified declarations, not guarantees of suitability.
+
+Only the original contribution signer can grant or revoke feedback consent. Supported purposes are `evaluation` and `training`. Export defaults to deny. Consent is causal, not decided by timestamps: for a purpose, only causally maximal consent records count. All concurrent maximal records must grant; any concurrent revoke denies export. A causally later explicit grant after observing revocation can restore opt-in. Permuting or merging records cannot silently undo a revoke. Missing withheld events cannot be discovered; applications need a current complete graph from their trusted sources.
+
+The exporter returns only contribution/project hashes, purpose, review counts, decision categories, dispute flag and consent-record hashes. It omits names, actor keys, URLs, artifact digests, profile text, work bodies, terms and review rationale. These hashes are linkable pseudonymous metadata, not anonymity. A contributor's opt-in is not a licence for third-party material. Revocation removes future export from the current graph; it cannot recall previously downloaded data or trained models. Export of a full collaboration bundle exposes all records regardless of feedback consent and must be a separate explicit action.
+
+## Bounds and limitations
+
+The 0.1 JSON caps also apply: 16 MiB canonical bytes, 200,000 visited JSON values, depth 20, 65,536-code-unit general strings and 10,000 array entries. Open bundles additionally cap records at 10,000 and total ancestor-set entries at 500,000 to bound DAG replay memory; a long narrow chain can reach that bound before the record cap. Nonempty descriptive text is limited to 8,192 code units, names/titles/tags/roles/model metadata to 256, URIs to 4,096, tag arrays and credit recipients to 100. Purposes are capped at two. Parsers must bound raw input bytes before parsing; duplicate JSON source keys discarded by parsing cannot be recovered by this value-level verifier. URI syntax is not a fetch or execution allowlist.
+
+Replay and matching operate locally with no dependencies. Graph verification is not distributed availability, permissioning, encryption, fraud detection or chain settlement. The exported fixture is fictional; the companion EVM exercise is local test evidence, never a live balance or legal equity.
+
+## Exact graph-to-contract bridge
+
+Two additional event kinds bind a proposed credit plan to explicit EVM destinations. `wallet.bound` has exactly `{project,chainId,address}` and is signed by the actor declaring that destination. `settlement.intent` has exactly `{project,contribution,chainId,contract,bindings}` and must be signed by the contribution's original signer. Bindings are sorted unique hashes of preceding `wallet.bound` records in the intent's ancestor closure. Projection adds `walletBindings` and `intents` arrays. Neither event changes credit status or proves settlement.
+
+An intent must include exactly one binding for each credited actor, plus a binding for the original contribution signer if that signer is not a credit recipient. Every binding must be self-signed by the actor it represents and name the same project and chain. All EVM addresses must be nonzero and distinct, including the principal destination. Extra actors, duplicate actors, cross-project/chain bindings and omitted principal bindings fail. Addresses are compared without case. A binding is an immutable destination assertion, not proof of wallet control, identity, legal ownership, beneficiary agreement or token entitlement. EVM transaction signatures separately prove control of the principal/agent addresses; the configured contract still enforces its verifier, delegation, caps and settlement policy.
+
+`deriveSettlementPlan(bundle,intentId)` verifies the full graph and returns `project`, `contribution`, `chainId`, `contract`, `principal`, `evidenceHash`, `workId`, `termsHash`, `criteriaHash`, `recipients` and `weights`. Principal is the original contribution signer's exact bound address. Recipients are sorted numerically as lowercase EVM address strings with their corresponding basis-point weights. `evidenceHash` is `0x` plus the exact SHA-256 artifact digest; `workId` is `0x` plus the contribution record hash; `termsHash` is `0x` plus project terms digest; `criteriaHash` is `0x` plus SHA-256 of the exact UTF-8 project policy text. No external artifact or terms URL is fetched. The adapter must deploy/select a contract with those exact terms and criteria and submit that exact evidence, work id and credit plan. The educational preimage verifier uses a different evidence predicate; graph integration uses the explicitly trusted reviewer-quorum policy unless an objective verifier actually validates the graph's declared evidence hash.
+
+Plans pin exact binding record hashes rather than a mutable latest-address map. Later destination declarations cannot silently redirect an earlier intent. A new destination requires a new explicitly signed intent; old intents remain historical authorizations, with no claim of revocation or automatic execution. The local EVM bridge exercise verifies signed graph data, derives the plan and executes transactions against those bindings. Its receipt report remains local test evidence and does not turn arbitrary `settlement.referenced` JSON into independently verified chain settlement.
