@@ -23,6 +23,14 @@ Project founders and contributors need a way to understand who did what and whic
 
 Koinos does not by itself incorporate entities, establish ownership, execute payments, create a currency or token, or determine legal rights. Any such capabilities, networks, and terms would require separate decisions, explicit agreements, and appropriate review.
 
+## Longer-term directions to explore
+
+The founder envisions a decentralized collaboration economy where people with ideas and markets can find builders, and builders can find partners who help them bring projects to market. Exofab is the prospective place for that human-first matching and collaboration; Koinos would provide reusable coordination and economic contracts that can also serve other communities. Agents could help participants carry out agreed terms, with credit and profits allocated according to rules the participants explicitly agree to.
+
+Ideas to investigate include shared credit, revenue and ownership arrangements for contributors to common infrastructure as well as individual projects or specialized marketplaces. Earlier brainstorming included an illustrative one percent per contributor, minting and dilution, and a hybrid equity and revenue-share model. These are examples to evaluate, not selected terms, financial products, or promises. Whether and how to use smart contracts, payment tools such as x402, or decision models against specific pre-agreed criteria is open; any implementation needs consent, transparent review, safeguards, and appropriate legal and economic design.
+
+Potential applications extend beyond software to marketplaces for skills, learning, agents, pets, models, services, and other peer-to-peer activity. One longer-term idea is decentralized learning and skill sharing connected to voluntary profit sharing. Decentralized resources such as idle compute or memory are a separate exploratory possibility, not a chosen dependency. Longer term, the founder also envisions robotics assisting creation as technology permits. Each application would need its own feasibility and rights assessment.
+
 ## First vertical slice
 
 1. Write an example of a project, a scoped agent task, a reviewed artifact, an accepted contribution, and a reference to a human agreement. Define what each participant can inspect and consent to.
