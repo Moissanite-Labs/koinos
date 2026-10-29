@@ -55,6 +55,17 @@ test("demo exposes only public bundle; server validates semantic authority", () 
     bundle.records[0].body.title = "tampered";
     assert.equal((await post(bundle)).status, 400);
   }));
+test("demo rejects inherited object names as stages", () =>
+  run(async (url) => {
+    for (const stage of ["toString", "__proto__", "constructor", "bogus"]) {
+      const response = await fetch(
+        url + "/api/demo?stage=" + encodeURIComponent(stage),
+      );
+      assert.equal(response.status, 400);
+      assert.deepEqual(await response.json(), { error: "Unknown demo stage" });
+    }
+    assert.equal((await fetch(url + "/api/demo?stage=revoked")).status, 200);
+  }));
 test("requires JSON and limits payload size", () =>
   run(async (url) => {
     assert.equal(
