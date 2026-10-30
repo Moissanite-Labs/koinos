@@ -17,7 +17,8 @@ export function createDemo({ stage = "accepted" } = {}) {
     review: 7,
     accepted: 8,
   };
-  if (!(stage in stages) && !["disputed", "revoked"].includes(stage))
+  const ordered = Object.hasOwn(stages, stage);
+  if (!ordered && !["disputed", "revoked"].includes(stage))
     throw new Error("Unknown demo stage");
   const steward = generateIdentity(),
     reviewer = generateIdentity(),
@@ -107,9 +108,7 @@ export function createDemo({ stage = "accepted" } = {}) {
     });
   }
   return {
-    bundle: createBundle(
-      stage in stages ? records.slice(0, stages[stage]) : records,
-    ),
+    bundle: createBundle(ordered ? records.slice(0, stages[stage]) : records),
     identities,
   };
 }
