@@ -1,0 +1,586 @@
+{
+  "openGraph": {
+    "path": "contracts/reports/open-demo.json",
+    "intent": "0c665ee3aedaea46d6707facbcd3e45605e08cc8d35e322bec7ba21bcd640759",
+    "contribution": "70189954e2a98f3d733baa367819ccf700d8d85bd7b0b9cc8a654c605e8ffde2",
+    "project": "4fdf172fcde8ef7f9fcbe30952cec81e909768409d5a828a1d035697c86d6440",
+    "bundleSha256": "82df4ddd776ede9bce59cccb28f0df96d7d1313ce53a08857d2c14e19c898dba",
+    "payload": {
+      "project": "4fdf172fcde8ef7f9fcbe30952cec81e909768409d5a828a1d035697c86d6440",
+      "contribution": "70189954e2a98f3d733baa367819ccf700d8d85bd7b0b9cc8a654c605e8ffde2",
+      "chainId": 31337,
+      "contract": "0xbf9fbff01664500a33080da5d437028b07dfcc55",
+      "principal": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+      "evidenceHash": "0x18e58a98733cd86872d83ff4281dca91c1263602dc72018a7c03c1f0c2e854ff",
+      "workId": "0x70189954e2a98f3d733baa367819ccf700d8d85bd7b0b9cc8a654c605e8ffde2",
+      "termsHash": "0xbeb5f152231ff488645b90f22909e451fc000b98effe25d3350db61b50a969eb",
+      "criteriaHash": "0x83769b9f49a4873111a1ae48ca22579a192bd2702f85be5f0e1b5b3a1029abac",
+      "recipients": [
+        "0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc",
+        "0x70997970c51812dc3a010c7d01b50e0d17dc79c8"
+      ],
+      "weights": [
+        5000,
+        5000
+      ]
+    }
+  },
+  "format": "koinos-local-evm-report/0.1",
+  "execution": "local-evm",
+  "liveNetwork": false,
+  "chainId": 31337,
+  "compiler": "0.8.38+commit.1835d247.Emscripten.clang",
+  "contracts": {
+    "factory": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+    "verifierFactory": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
+    "source": "0x9f1ac54BEF0DD2f6f3462EA0fa94fC62300d3a8e",
+    "branch": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+    "paymentAsset": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "objectiveVerifier": "0xAe367415f4BDe0aDEE3e59C35221d259f517413E",
+    "quorumVerifier": "0x4D17b728F3E78e62Ac86D585bE00738Eae7528C6",
+    "appealVerifier": "0x9959EFF900eDC4103CE1730815DC4514a292163A"
+  },
+  "policy": {
+    "rewardBps": 100,
+    "sourceFeeBps": 2000,
+    "maxSupplyUnits": "1000000",
+    "maxAwardUnits": "100000",
+    "maxAwards": 100,
+    "settlementDelaySeconds": 60,
+    "appealTimeoutSeconds": 120,
+    "challengeBondUnits": "50",
+    "creditSplitRemainder": "last sorted recipient",
+    "revenueLabel": "funded receipts, not net profits",
+    "sourceTermsHash": "0xbeb5f152231ff488645b90f22909e451fc000b98effe25d3350db61b50a969eb",
+    "branchTermsHash": "0xbeb5f152231ff488645b90f22909e451fc000b98effe25d3350db61b50a969eb",
+    "sourceRewardPolicyHash": "0xdb0a417bb228709b77a1f208136d8865453ad589aa32d3657750c76bd4236c39",
+    "branchRewardPolicyHash": "0x4884e9beb64458212ba4344a149edfaa1b4c739d761a57edb2433e51f0185499"
+  },
+  "transactions": [
+    {
+      "label": "deploy TestPayment",
+      "hash": "0xb7d3af5ea1a25e4e6913d99d43a9818b1f87cb9c4d6d32d4631b9e98c0117b38",
+      "blockNumber": 1,
+      "blockHash": "0xdd6b80cb9d366fa1a7dd6f8b041e50a9b71f53977299d4017bc07f7f9c66fa37",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": null,
+      "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "status": "success",
+      "gasUsed": "477523"
+    },
+    {
+      "label": "deploy ProjectFactory",
+      "hash": "0xad20b4688a4fec9e885166d74f388d02ab6d1d464c0301f5135b96db43db1705",
+      "blockNumber": 2,
+      "blockHash": "0xb7912fe334166aafb9cc76faf91daa73afcf6bb0aa0c85096572bd22e0f0cf61",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": null,
+      "contractAddress": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "status": "success",
+      "gasUsed": "6542159"
+    },
+    {
+      "label": "create objective verifier",
+      "hash": "0x6ab15008ee42b5d9130d8a122c9eb89c70ae2925f5bb3844493933a53d9abcb8",
+      "blockNumber": 3,
+      "blockHash": "0x5708d3c1ead0fa3aa023843a011ba248e9bf5aa0aeefa4f1b3528b0701a1d134",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "215192"
+    },
+    {
+      "label": "create quorum verifier",
+      "hash": "0x6090de6249b25c2d25fd767e0ec957c7eef7f8713f3da9144d36dabc446d72e6",
+      "blockNumber": 4,
+      "blockHash": "0xf36cb37c0ec47915671cc6d3b1191219a858a017a88804c4a79d73a43f2c57c1",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "899744"
+    },
+    {
+      "label": "create quorum verifier",
+      "hash": "0xf8720ec6d1db41c569ad52e57e0c08b73327f6409c059490285256701b929d58",
+      "blockNumber": 5,
+      "blockHash": "0xd6ca40818490fb93fe92ccfee7d6a845a5ddd77fddcd9d172d8bc63e104bff01",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "854018"
+    },
+    {
+      "label": "create Common catalogue infrastructure",
+      "hash": "0xe33590188517172a11d4767cc380e3f5ec351fb44080509cae0556e820a4be44",
+      "blockNumber": 6,
+      "blockHash": "0x755b412044e49b16ff1e5e84f294b23a2422c86ef8bfc51cd8712a5ca55fd057",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "3461023"
+    },
+    {
+      "label": "principal delegates exact common task and credit plan",
+      "hash": "0xff8ee647bd16062ed5eb92f6535dae7b01f3b0267a3a90de334f56d090bf9bae",
+      "blockNumber": 7,
+      "blockHash": "0x17a1e457df5e3b4f9a616501199b4a3afba2287f94d9e10a155e0e2e45f4b085",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": "0x9f1ac54BEF0DD2f6f3462EA0fa94fC62300d3a8e",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "49842"
+    },
+    {
+      "label": "commit contribution",
+      "hash": "0x155a546e05144b64c6930c5e4ef0f1757f32a80df78ef9e75fbac94fc0e45964",
+      "blockNumber": 8,
+      "blockHash": "0xa2e085b021d8d37fb67216927623237fae3ac3cfce952fc302063bad99075743",
+      "from": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "to": "0x9f1ac54BEF0DD2f6f3462EA0fa94fC62300d3a8e",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "47089"
+    },
+    {
+      "label": "reveal contribution",
+      "hash": "0x274de0aaf026a5ff9713c8a00a4e380153203ad58c83798efe5f1022973250f0",
+      "blockNumber": 9,
+      "blockHash": "0x1c19c6017907a474fad9d27263a7441a2bc4a689fb2a018b63ba9b26e51af34a",
+      "from": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "to": "0x9f1ac54BEF0DD2f6f3462EA0fa94fC62300d3a8e",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "195580"
+    },
+    {
+      "label": "create Regional seed marketplace",
+      "hash": "0x3162990af652eb9f8c0a68e07793aaaa553a671b45491d5a3871e34a2dbaf36a",
+      "blockNumber": 10,
+      "blockHash": "0xa79bd82cc53f61c8549bf88b10a8852f547e3b87f9a46988e18f3d94b3615d91",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "3497367"
+    },
+    {
+      "label": "before new contributor: fund payer with local faucet asset",
+      "hash": "0x1fdfb634be8a444192f838cc4e962e059d38b142ddfbb6f717707cc1b5fca535",
+      "blockNumber": 11,
+      "blockHash": "0xacd44488464f0e822f4757b25af14912e6767e024a7b3069f6657ade96c1d1f3",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "68046"
+    },
+    {
+      "label": "before new contributor: approve exact funded revenue",
+      "hash": "0xa0d10d7c449ac2c64d92cda43ed6da2f93d9d785e96b646ce83d919de6bf1df9",
+      "blockNumber": 12,
+      "blockHash": "0x3e9ae89d4daaf6df9608e37f7c106024cc486742034f9c46f562b5b934ede940",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "45906"
+    },
+    {
+      "label": "before new contributor: deposit funded receipts",
+      "hash": "0xc37b04b564fe8cea00ff89a8e15a1e592ed1bc4bda657e2279b8eb3e487c2547",
+      "blockNumber": 13,
+      "blockHash": "0xc853f741668fce8673fe2c03f76ceb784022765c71b6a9be7f786d45da426fb8",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "264996"
+    },
+    {
+      "label": "branch principal delegates exact task",
+      "hash": "0x6b2a4c905d0bd3f559f868c33f48284caac24164afa33868d7f8ad51d5aec953",
+      "blockNumber": 14,
+      "blockHash": "0x4247d7d85642666ce771a36dfd606894f3e86eb231f16efdd0ba50f6173651a2",
+      "from": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "to": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "49842"
+    },
+    {
+      "label": "commit contribution",
+      "hash": "0x53013d9e757daa8335b389db89ab342c305458e3827d5ba14705ba1e1a767e25",
+      "blockNumber": 15,
+      "blockHash": "0xd7bd9082ec10397413b5ea8451a450866a83389d1d5e165b0a97aa24305c9b07",
+      "from": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "to": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "47089"
+    },
+    {
+      "label": "reveal contribution",
+      "hash": "0x16177bf44303e2ef2820d5800b6fbc93866021365b0e4d4172ff49eb8f5bcf22",
+      "blockNumber": 16,
+      "blockHash": "0x5264719a2f07a88c1d5e16a4dfad1b540b3746d23e9bfbe0faf65df1d060d873",
+      "from": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "to": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "214978"
+    },
+    {
+      "label": "fund challenger bond",
+      "hash": "0x9b292132682edf96796b7e4d600bf53cdeef590fe38b94e5e53ea7853dd1c3a9",
+      "blockNumber": 17,
+      "blockHash": "0xdae87d2a1126193feb186fa5260c8ac2a0a5f4029d0bc375839eb042f09cff40",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "50934"
+    },
+    {
+      "label": "approve exact challenge bond",
+      "hash": "0x7ff369aa248fd15e13faa33f2754804a25645f9d53e09b750acb51ad81159608",
+      "blockNumber": 18,
+      "blockHash": "0x4dca730c87d96f19c4c31a631fcacf162364e140fc861c1c47d7d63ce17ed0c3",
+      "from": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "to": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "45894"
+    },
+    {
+      "label": "challenge exact pending contribution",
+      "hash": "0xcd9fbbcbb288e46a92261dcc8ace4b13d328a70da2f4633ac8b67953e4dd2354",
+      "blockNumber": 19,
+      "blockHash": "0xb783727a5a2f46ddc08ede722afff97f56e6408c95d076ace7ec1cfcc80b4756",
+      "from": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "to": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "109421"
+    },
+    {
+      "label": "disjoint appeal quorum upholds exact claim",
+      "hash": "0x55fab0ee416c45f7bed79d0633c297d1e914a503040c097d98b5c900afb06862",
+      "blockNumber": 20,
+      "blockHash": "0xad5b116379dfdb70e32fd2c9186df355190e252d84bfef3b1da096ffa3f9bbfe",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "97983"
+    },
+    {
+      "label": "permissionless finalize after settlement delay",
+      "hash": "0x204a13dd403b6461874056a044b91238793f4f888c2d02d80b029be0c8db72c3",
+      "blockNumber": 22,
+      "blockHash": "0x8467729201adc13d6395e7d4aeb317f2a1877707190e87e8e12473190eaa1aec",
+      "from": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "to": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "222698"
+    },
+    {
+      "label": "principal withdraws forfeited challenge bond",
+      "hash": "0x07ef7ded4f27e80b4046b3ab184c22c899d1ea716d81b12d0b7ea4e620ee697d",
+      "blockNumber": 23,
+      "blockHash": "0x668f6fe2a8bb271f21f13f39a6d9b611cb52d5a323060f85299e06650abc7372",
+      "from": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "to": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "62712"
+    },
+    {
+      "label": "transfer ownership units to another holder",
+      "hash": "0x8508e2d996153e4747b7b4e5036119d73cd2f7cc339d85f6f70ba2798bce01e5",
+      "blockNumber": 24,
+      "blockHash": "0x8829e420dde552e264c9cb4c1cd677dbe3351c5749d05e4878edf7970e419a1d",
+      "from": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "to": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "81448"
+    },
+    {
+      "label": "after award and transfer: fund payer with local faucet asset",
+      "hash": "0xcd9c88d4339a99af4219ab859d14e778d0c7c74077ab15f1a595245c3869b57f",
+      "blockNumber": 25,
+      "blockHash": "0x6ba6a796e654f7c3c2b243ed79133c2ec84d7bf64131b9f89e33d5232d5e782b",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "50946"
+    },
+    {
+      "label": "after award and transfer: approve exact funded revenue",
+      "hash": "0x64c1792ed3310040a1da06b259f04e336311f5c07d64222eb76de214c406e931",
+      "blockNumber": 26,
+      "blockHash": "0xbe3d5eaf4ae939f7db29b29a6f18e07445c2c3cb9d42e5f58a33aa00c4a6cf5a",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "45906"
+    },
+    {
+      "label": "after award and transfer: deposit funded receipts",
+      "hash": "0x759c823b60231db4ccbfeb2ac3008250c09d3d7c15abc78ef4b4c13e0143bb46",
+      "blockNumber": 27,
+      "blockHash": "0x3ce31430dcfc2feb037c076655df89d2bf3f939e9f415d26e2ed89c440338b82",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "116957"
+    },
+    {
+      "label": "source holder withdraws accrued receipts",
+      "hash": "0xb92a78883278e620ae56865b1deea6df796c8026fb046bd3c0cb0cac63f1ec32",
+      "blockNumber": 28,
+      "blockHash": "0x32bef17e46dcce22a93c22086fe9cfdbf4dfa894807c44eb3dc0ba977809356c",
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "to": "0x9f1ac54BEF0DD2f6f3462EA0fa94fC62300d3a8e",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "113147"
+    },
+    {
+      "label": "source holder withdraws accrued receipts",
+      "hash": "0x9c83a59074c3ca0a1e247aa18983bcb04d64cacd03f0fcfb583dd918ca82983c",
+      "blockNumber": 29,
+      "blockHash": "0xb55cc0397b9df4527780eb36fe3a8094ac9157f2cd4ba26a0b5f2fb4f0097184",
+      "from": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "to": "0x9f1ac54BEF0DD2f6f3462EA0fa94fC62300d3a8e",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "96047"
+    },
+    {
+      "label": "branch holder withdraws accrued receipts",
+      "hash": "0xfd9e9ec93fda4511c0ec7ccbf74d6125a5f86d6df586da0c0077960a83db8219",
+      "blockNumber": 30,
+      "blockHash": "0x5ff6e904e5ff6e70862a78c2b49e2ba02d1e6d90eccf8f5fd595fc466cb7db8c",
+      "from": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "to": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "96047"
+    },
+    {
+      "label": "branch holder withdraws accrued receipts",
+      "hash": "0x7065e7dbdb319a9ad7ce12278de4f5a8fff87a832c5a5ae8b33bce05c0e53898",
+      "blockNumber": 31,
+      "blockHash": "0x3d9f0bd039869b1b7bb3302f0972f2bd56d7ded89ac928fb0448381beeea0962",
+      "from": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "to": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "78947"
+    },
+    {
+      "label": "branch holder withdraws accrued receipts",
+      "hash": "0xe36bb4c762d79370abba29ff3a1744227fc08d5eebc334cb37f56a7f0b963310",
+      "blockNumber": 32,
+      "blockHash": "0x11fc52294e950def5f30f8c4fb6ebd1a79881aca4541a20cc676491a37b10dfb",
+      "from": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "to": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+      "contractAddress": null,
+      "status": "success",
+      "gasUsed": "96047"
+    }
+  ],
+  "checks": [
+    {
+      "name": "objective task finalized and minted without discretionary approval",
+      "passed": true
+    },
+    {
+      "name": "signed graph terms are the immutable branch terms",
+      "passed": true
+    },
+    {
+      "name": "signed graph policy is the immutable branch criteria",
+      "passed": true
+    },
+    {
+      "name": "signed exact wallet plan feeds the contract claim",
+      "passed": true
+    },
+    {
+      "name": "review quorum proposes pending award with no immediate ownership",
+      "passed": true
+    },
+    {
+      "name": "bond escrow does not become holder revenue",
+      "passed": true
+    },
+    {
+      "name": "actual Accepted event matches signed graph work",
+      "passed": true
+    },
+    {
+      "name": "actual Accepted event matches signed graph evidence",
+      "passed": true
+    },
+    {
+      "name": "actual Accepted event matches exact derived credit split",
+      "passed": true
+    },
+    {
+      "name": "quorum award mints one hundred smallest units",
+      "passed": true
+    },
+    {
+      "name": "mint does not award historical receipts to new contributor",
+      "passed": true
+    },
+    {
+      "name": "historical accrual remains with original holder",
+      "passed": true
+    },
+    {
+      "name": "bond escrow clears independently of revenue",
+      "passed": true
+    },
+    {
+      "name": "transfer recipient cannot claim earlier revenue",
+      "passed": true
+    },
+    {
+      "name": "source receives twenty percent of funded branch receipts",
+      "passed": true
+    },
+    {
+      "name": "branch holders receive eighty percent of funded receipts",
+      "passed": true
+    },
+    {
+      "name": "permanent credit survives ownership transfer",
+      "passed": true
+    },
+    {
+      "name": "source asset reserve reconciles with funded revenue minus payouts",
+      "passed": true
+    },
+    {
+      "name": "branch asset reserve reconciles with funded revenue minus payouts",
+      "passed": true
+    }
+  ],
+  "balances": {
+    "source": [
+      {
+        "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+        "tokenUnits": "9970",
+        "earnedCreditUnits": "70",
+        "revenueWithdrawableUnits": "0",
+        "revenueWithdrawnUnits": "3987"
+      },
+      {
+        "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+        "tokenUnits": "30",
+        "earnedCreditUnits": "30",
+        "revenueWithdrawableUnits": "0",
+        "revenueWithdrawnUnits": "11"
+      }
+    ],
+    "branch": [
+      {
+        "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "tokenUnits": "8950",
+        "earnedCreditUnits": "50",
+        "revenueWithdrawableUnits": "0",
+        "revenueWithdrawnUnits": "15159"
+      },
+      {
+        "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+        "tokenUnits": "50",
+        "earnedCreditUnits": "50",
+        "revenueWithdrawableUnits": "0",
+        "revenueWithdrawnUnits": "39"
+      },
+      {
+        "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+        "tokenUnits": "1000",
+        "earnedCreditUnits": "0",
+        "revenueWithdrawableUnits": "0",
+        "revenueWithdrawnUnits": "799"
+      }
+    ]
+  },
+  "revenue": {
+    "grossBranchDepositsUnits": "20000",
+    "sourceFeeUnits": "4000",
+    "sourceHolderRevenueUnits": "4000",
+    "branchHolderRevenueUnits": "16000",
+    "sourcePayoutsUnits": "3998",
+    "branchPayoutsUnits": "15997",
+    "sourceRetainedReserveUnits": "2",
+    "branchRetainedReserveUnits": "3",
+    "branchMagnifiedRoundingNumerator": "17200",
+    "magnitude": "18446744073709551616"
+  },
+  "settlements": [
+    {
+      "transactionHash": "0x274de0aaf026a5ff9713c8a00a4e380153203ad58c83798efe5f1022973250f0",
+      "blockNumber": 9,
+      "logIndex": 5,
+      "observed": {
+        "actor": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+        "principal": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+        "workId": "0x21ba8da43db3c44c8bd00602942fabb13de530ed493ff25ed3f71499a375a0e1",
+        "evidence": "0xebf70870773d84b4a1f668c4ad0a7d0f45f5049a6f1967101376bcdedac704d0",
+        "creditHash": "0xe459ac6ee1468afa5b68d38fbd19b4ed66c78d28488d0cf5a976b13d3cc70095",
+        "mintedUnits": "100"
+      },
+      "project": "0x9f1ac54BEF0DD2f6f3462EA0fa94fC62300d3a8e",
+      "workId": "0x21ba8da43db3c44c8bd00602942fabb13de530ed493ff25ed3f71499a375a0e1",
+      "evidence": "0xebf70870773d84b4a1f668c4ad0a7d0f45f5049a6f1967101376bcdedac704d0",
+      "actor": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "principal": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "creditHash": "0xe459ac6ee1468afa5b68d38fbd19b4ed66c78d28488d0cf5a976b13d3cc70095",
+      "verifiedLocally": true,
+      "trust": "on-chain hash-preimage predicate only"
+    },
+    {
+      "transactionHash": "0x204a13dd403b6461874056a044b91238793f4f888c2d02d80b029be0c8db72c3",
+      "blockNumber": 22,
+      "logIndex": 4,
+      "observed": {
+        "actor": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+        "principal": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "workId": "0x70189954e2a98f3d733baa367819ccf700d8d85bd7b0b9cc8a654c605e8ffde2",
+        "evidence": "0x18e58a98733cd86872d83ff4281dca91c1263602dc72018a7c03c1f0c2e854ff",
+        "creditHash": "0x2c324ba2b221d03d2361f535051ccf0c78e719e9be9b74d794c00c8d5ee378b9",
+        "mintedUnits": "100"
+      },
+      "project": "0xbf9fBFf01664500A33080Da5d437028b07DFcC55",
+      "workId": "0x70189954e2a98f3d733baa367819ccf700d8d85bd7b0b9cc8a654c605e8ffde2",
+      "evidence": "0x18e58a98733cd86872d83ff4281dca91c1263602dc72018a7c03c1f0c2e854ff",
+      "actor": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "principal": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+      "creditHash": "0x2c324ba2b221d03d2361f535051ccf0c78e719e9be9b74d794c00c8d5ee378b9",
+      "verifiedLocally": true,
+      "trust": "trusted reviewer quorum and separate bonded appeal policy"
+    }
+  ],
+  "limitations": [
+    "Fictional local demonstration; no live balances, payments, legal equity or real economic performance.",
+    "All units are smallest integer token/asset units, not currency prices or projections.",
+    "The objective task verifies a hash preimage, not software quality; the quorum trusts its configured reviewers.",
+    "Distinct reviewer addresses do not establish distinct people or resistance to collusion.",
+    "Funded receipts do not establish net profits, external income, expenses or ownership rights.",
+    "Settled transferable tokens are final in this prototype; later off-chain disputes cannot claw them back.",
+    "The local report is historical test evidence, not a trusted live-chain oracle."
+  ]
+}

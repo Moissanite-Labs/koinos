@@ -2,9 +2,27 @@ import http from "node:http";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { realpathSync } from "node:fs";
-import { verifyBundle } from "./protocol.mjs";
+import { verifyBundle, canonicalize } from "./protocol.mjs";
 const assets = new Map([
   ["/", ["index.html", "text/html"]],
+  ...[
+    "open.html",
+    "open.mjs",
+    "open.css",
+    "open-crypto.mjs",
+    "open-economics.mjs",
+  ].map((name) => [
+    "/" + name,
+    [
+      name,
+      name.endsWith(".css")
+        ? "text/css"
+        : name.endsWith(".html")
+          ? "text/html"
+          : "text/javascript",
+    ],
+  ]),
+  ["/open", ["open.html", "text/html"]],
   ["/app.mjs", ["app.mjs", "text/javascript"]],
   ["/verify.mjs", ["verify.mjs", "text/javascript"]],
   ["/style.css", ["style.css", "text/css"]],
@@ -39,6 +57,92 @@ export function createServer() {
           await readFile(new URL("../web/" + name, import.meta.url), "utf8"),
           type,
         );
+      }
+      if (req.method === "GET" && url.pathname === "/api/open/demo") {
+        const { createOpenDemo } = await import("./open-demo.mjs");
+        return reply(200, createOpenDemo());
+      }
+      if (req.method === "GET" && url.pathname === "/api/open/evm-graph") {
+        try {
+          const graph = JSON.parse(
+            await readFile(
+              new URL("../contracts/reports/open-demo.json", import.meta.url),
+              "utf8",
+            ),
+          );
+          const { verifyOpenBundle, deriveSettlementPlan } =
+            await import("./open-protocol.mjs");
+          verifyOpenBundle(graph);
+          const report = JSON.parse(
+            await readFile(
+              new URL("../contracts/reports/local-demo.json", import.meta.url),
+              "utf8",
+            ),
+          );
+          if (
+            report.execution !== "local-evm" ||
+            report.liveNetwork !== false ||
+            canonicalize(
+              deriveSettlementPlan(graph, report.openGraph.intent),
+            ) !== canonicalize(report.openGraph.payload)
+          )
+            throw Error("Report payload differs from signed graph");
+          return reply(200, graph);
+        } catch (error) {
+          return reply(404, {
+            error: "Executed graph unavailable: " + error.message,
+          });
+        }
+      }
+      if (req.method === "GET" && url.pathname === "/api/open/evm-report") {
+        try {
+          return reply(
+            200,
+            await readFile(
+              new URL("../contracts/reports/local-demo.json", import.meta.url),
+              "utf8",
+            ),
+          );
+        } catch {
+          return reply(404, {
+            error:
+              "Local EVM report has not been generated. Run the documented contracts demo.",
+          });
+        }
+      }
+      if (
+        req.method === "POST" &&
+        ["/api/open/verify", "/api/open/merge", "/api/open/match"].includes(
+          url.pathname,
+        )
+      ) {
+        if (!req.headers["content-type"]?.startsWith("application/json"))
+          return reply(415, { error: "Use application/json" });
+        let size = 0,
+          chunks = [];
+        for await (const chunk of req) {
+          size += chunk.length;
+          if (size > MAX)
+            return reply(413, { error: "Bundle exceeds 2 MiB limit" });
+          chunks.push(chunk);
+        }
+        const input = JSON.parse(Buffer.concat(chunks).toString("utf8"));
+        const api = await import("./open-protocol.mjs");
+        if (url.pathname === "/api/open/merge") {
+          if (
+            !Array.isArray(input.bundles) ||
+            input.bundles.length < 2 ||
+            input.bundles.length > 8
+          )
+            throw Error("Supply two to eight complete bundles");
+          const bundle = api.mergeOpenBundles(...input.bundles);
+          return reply(200, { bundle, state: api.verifyOpenBundle(bundle) });
+        }
+        if (url.pathname === "/api/open/match")
+          return reply(200, {
+            matches: api.matchOpportunities(input.bundle, input.profile),
+          });
+        return reply(200, { state: api.verifyOpenBundle(input) });
       }
       if (req.method === "GET" && url.pathname === "/api/demo") {
         const { createDemo } = await import("./demo.mjs");

@@ -1,0 +1,232 @@
+{
+  "format": "koinos-open/0.2",
+  "records": [
+    {
+      "actor": "koinos:ed25519:WgBzl1tZ3Y23k_rTUqBj5oeBsDz9LPUshdLO8e4j9hQ",
+      "body": {
+        "name": "Mira · fictional creator",
+        "needs": [
+          "software engineering"
+        ],
+        "role": "creator",
+        "skills": [
+          "product design",
+          "community"
+        ],
+        "statement": "Sandbox profile; seeking a seed catalogue collaboration."
+      },
+      "id": "108cfdadca1fb6e4491bf639d8dc5900a6e9ef19a24d0a74f373a0dc0a30da94",
+      "kind": "profile.published",
+      "parents": [],
+      "protocol": "koinos-open/0.2",
+      "signature": "5aPpix5EvB0XfGuqq79A-cnG96JYrifquaI9Afp6Ccd21XBsEHXAfwjLAPWUpeyl2riyZDqfU5fw4odPxQ5BCg",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:jbK_iZjpPOrkd1xoKqxBOv__-EDgAKLEfYcxdt_tPQE",
+      "body": {
+        "name": "Seed builder · fictional agent",
+        "needs": [
+          "product design"
+        ],
+        "role": "agent builder",
+        "skills": [
+          "software engineering",
+          "JSON Schema"
+        ],
+        "statement": "Declared capabilities only; no verified personhood or performance."
+      },
+      "id": "03241ac53aa88f1802376208d46a0f83b334779bfc8de638d5c5dcc03f9b3892",
+      "kind": "profile.published",
+      "parents": [
+        "108cfdadca1fb6e4491bf639d8dc5900a6e9ef19a24d0a74f373a0dc0a30da94"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "vQfJqUAUUZEgUs5DPfeGfbgaOaIz5BEr5tkJbYC29EX-u_XBEFbS7vdsAvXRs9dnmpymFbD-IrUkZuriQcpOBQ",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:WgBzl1tZ3Y23k_rTUqBj5oeBsDz9LPUshdLO8e4j9hQ",
+      "body": {
+        "criteria": "Publish a bounded JSON Schema with origin fields; independent review remains a signed opinion.",
+        "offers": [
+          "product design",
+          "community"
+        ],
+        "problem": "Small seed libraries need a shared catalogue format.",
+        "seeks": [
+          "software engineering",
+          "JSON Schema"
+        ],
+        "terms": {
+          "digest": "c610d236bc3186386c406a07f4dbedf7183f67cba141303328cf7502807a505d",
+          "uri": "https://example.invalid/open-terms"
+        },
+        "title": "Portable seed catalogue"
+      },
+      "id": "5eaa803f1f28c9fcde8d8560783d8d72a1af70f70fbf9ab444a3691013e3068f",
+      "kind": "opportunity.published",
+      "parents": [
+        "03241ac53aa88f1802376208d46a0f83b334779bfc8de638d5c5dcc03f9b3892"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "fgpGtHZxdhgt4ZGwvPLDiqWhEOXdbEYKaxdhRVZkWUzZ0HMKTuVPDX7BjNvShsOapgk7tXTYoFvGBzt0fR-0BQ",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:WgBzl1tZ3Y23k_rTUqBj5oeBsDz9LPUshdLO8e4j9hQ",
+      "body": {
+        "opportunity": "5eaa803f1f28c9fcde8d8560783d8d72a1af70f70fbf9ab444a3691013e3068f",
+        "originator": "108cfdadca1fb6e4491bf639d8dc5900a6e9ef19a24d0a74f373a0dc0a30da94",
+        "policy": "Permissionless claims. Signed reviews are evidence only. Ownership requires separate immutable on-chain rules.",
+        "source": null,
+        "terms": {
+          "digest": "c610d236bc3186386c406a07f4dbedf7183f67cba141303328cf7502807a505d",
+          "uri": "https://example.invalid/open-terms"
+        },
+        "title": "Common catalogue infrastructure"
+      },
+      "id": "ca48830c1ba47f67e5083a3f086adc8bfb27c5bdb3f5896b4bdc7dbacbc1b852",
+      "kind": "project.created",
+      "parents": [
+        "5eaa803f1f28c9fcde8d8560783d8d72a1af70f70fbf9ab444a3691013e3068f"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "_l-Y-951SU10rOiZn7CfOibkhSdPfktz79MaG30jQasmR6EEXPTx_UbYIEcRZ0JjSC77L29UPI70a9j_KQLMCA",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:WgBzl1tZ3Y23k_rTUqBj5oeBsDz9LPUshdLO8e4j9hQ",
+      "body": {
+        "opportunity": "5eaa803f1f28c9fcde8d8560783d8d72a1af70f70fbf9ab444a3691013e3068f",
+        "originator": "108cfdadca1fb6e4491bf639d8dc5900a6e9ef19a24d0a74f373a0dc0a30da94",
+        "policy": "Separate branch credit. Source revenue fee is a disclosed separate contract policy; this DAG executes no payment.",
+        "source": "ca48830c1ba47f67e5083a3f086adc8bfb27c5bdb3f5896b4bdc7dbacbc1b852",
+        "terms": {
+          "digest": "c610d236bc3186386c406a07f4dbedf7183f67cba141303328cf7502807a505d",
+          "uri": "https://example.invalid/open-terms"
+        },
+        "title": "Regional seed marketplace"
+      },
+      "id": "58ef8de225b2f2aa820307a53388332355cb9ae0133a8fab679dea11a2945d4a",
+      "kind": "project.created",
+      "parents": [
+        "ca48830c1ba47f67e5083a3f086adc8bfb27c5bdb3f5896b4bdc7dbacbc1b852"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "cRAXM2e_K1_HXHA0JVe_ZIFa70ncEfA2YJXaoiu0LFbOd_hfbUl0A4p4UfeZEvXWtSSpDK-AsTSQXWzkdKGgDg",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:jbK_iZjpPOrkd1xoKqxBOv__-EDgAKLEfYcxdt_tPQE",
+      "body": {
+        "credit": [
+          {
+            "actor": "koinos:ed25519:jbK_iZjpPOrkd1xoKqxBOv__-EDgAKLEfYcxdt_tPQE",
+            "weight": 10000
+          }
+        ],
+        "evidence": {
+          "digest": "fea6ac80606e141f62206661a80c91479f40606fdf545e033ca63d55ac4f252d",
+          "uri": "https://example.invalid/private-draft/schema"
+        },
+        "project": "ca48830c1ba47f67e5083a3f086adc8bfb27c5bdb3f5896b4bdc7dbacbc1b852",
+        "references": [],
+        "title": "Proposed seed catalogue schema"
+      },
+      "id": "961665627723dbdeb770febf26e664c7ddaad40642b91f97d28838c5a93aba7e",
+      "kind": "contribution.claimed",
+      "parents": [
+        "58ef8de225b2f2aa820307a53388332355cb9ae0133a8fab679dea11a2945d4a"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "17XhMCX2Ntz0nruku10yXBR5CfODRLe1lshalRZESoAoyh21GMtAUBpbpaGNMiV1b-tpEFGqzOSElLVR4HM5CA",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:GqWQyA_9mLEkLqDiRz_0dyxzy-UMX-IkMSgYlYsbrxo",
+      "body": {
+        "contribution": "961665627723dbdeb770febf26e664c7ddaad40642b91f97d28838c5a93aba7e",
+        "criteriaDigest": "c610d236bc3186386c406a07f4dbedf7183f67cba141303328cf7502807a505d",
+        "decision": "approve",
+        "model": null,
+        "project": "ca48830c1ba47f67e5083a3f086adc8bfb27c5bdb3f5896b4bdc7dbacbc1b852",
+        "rationale": "Fictional review: fields meet the declared example criteria.",
+        "reviewerType": "human"
+      },
+      "id": "2aa38dbaa5991eb935b76864a541382d68916f29a058f65164f05db0bc5d2110",
+      "kind": "contribution.reviewed",
+      "parents": [
+        "961665627723dbdeb770febf26e664c7ddaad40642b91f97d28838c5a93aba7e"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "kPUZD2hyqTEfvGEv2vzabvZr1iOw7BXlStvchMDt02d2JFc48gbKmVm16z8Yu2pT8mYThxxhgQCslGToZvyzBQ",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:WgBzl1tZ3Y23k_rTUqBj5oeBsDz9LPUshdLO8e4j9hQ",
+      "body": {
+        "contribution": "961665627723dbdeb770febf26e664c7ddaad40642b91f97d28838c5a93aba7e",
+        "criteriaDigest": "c610d236bc3186386c406a07f4dbedf7183f67cba141303328cf7502807a505d",
+        "decision": "request_changes",
+        "model": null,
+        "project": "ca48830c1ba47f67e5083a3f086adc8bfb27c5bdb3f5896b4bdc7dbacbc1b852",
+        "rationale": "Fictional disagreement: origin semantics need clarification.",
+        "reviewerType": "human"
+      },
+      "id": "ec3644eefb12d04291766a2cf8e8de36865b8756fa90d5d0a55d34955167987a",
+      "kind": "contribution.reviewed",
+      "parents": [
+        "961665627723dbdeb770febf26e664c7ddaad40642b91f97d28838c5a93aba7e"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "I8h-8ObXXyuNfcFhY9SpWk9vZszka4r9NPBIVQoVN8mLk-83GLmuCuLRLdxOS2ARa6o_ZYMDmhiwQuf8eaYdDQ",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:jbK_iZjpPOrkd1xoKqxBOv__-EDgAKLEfYcxdt_tPQE",
+      "body": {
+        "credit": [
+          {
+            "actor": "koinos:ed25519:jbK_iZjpPOrkd1xoKqxBOv__-EDgAKLEfYcxdt_tPQE",
+            "weight": 10000
+          }
+        ],
+        "evidence": {
+          "digest": "9cb2d31adf8debe2093e52d0aa60ec801f924ce9f599c943a8731e7f4c02c759",
+          "uri": "urn:koinos:fictional:regional-vocabulary"
+        },
+        "project": "58ef8de225b2f2aa820307a53388332355cb9ae0133a8fab679dea11a2945d4a",
+        "references": [],
+        "title": "Regional vocabulary adaptation"
+      },
+      "id": "9a8d0ac0eb25aa3ba195130fcf198365c35e61ec6891f9b678ad7139c5e15a42",
+      "kind": "contribution.claimed",
+      "parents": [
+        "2aa38dbaa5991eb935b76864a541382d68916f29a058f65164f05db0bc5d2110",
+        "ec3644eefb12d04291766a2cf8e8de36865b8756fa90d5d0a55d34955167987a"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "bVGGzKrCMcgX0eZqMfi7kxbxBCaAtjvreKW25CHtPlF-5GGKDr8qhqauJNMFNvomwcaBYhSHOhnOV-zn2MptBw",
+      "time": "2026-10-29T12:00:00.000Z"
+    },
+    {
+      "actor": "koinos:ed25519:jbK_iZjpPOrkd1xoKqxBOv__-EDgAKLEfYcxdt_tPQE",
+      "body": {
+        "action": "grant",
+        "contribution": "961665627723dbdeb770febf26e664c7ddaad40642b91f97d28838c5a93aba7e",
+        "purposes": [
+          "evaluation"
+        ]
+      },
+      "id": "8c319c48a20004be7a411f4160f0a1aabadaa4ec8bbb86b4aa5cb47bb990ab6c",
+      "kind": "feedback.consented",
+      "parents": [
+        "9a8d0ac0eb25aa3ba195130fcf198365c35e61ec6891f9b678ad7139c5e15a42"
+      ],
+      "protocol": "koinos-open/0.2",
+      "signature": "--_seDgcaJps9lnF8aFuZD_B4JFflwiSBaJyrKPHcHgefeXt753XxmIa8kJ-eijZciDWLD0JMB9cpxcQuOe6Bg",
+      "time": "2026-10-29T12:00:00.000Z"
+    }
+  ]
+}
