@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { createPublicKey, randomUUID, verify } from "node:crypto";
+import { randomUUID } from "node:crypto";
 import {
   generateIdentity,
   createRecord,
@@ -428,7 +428,7 @@ test("delegation cannot change principal, agent, agreement or introduce human de
     }),
   );
 });
-test("small-order actor keys are rejected even when forged signatures verify", async () => {
+test("small-order actor keys are rejected before signature verification", async () => {
   const { verifyCryptography } = await import("../web/verify.mjs");
   const p = 2n ** 255n - 19n,
     order8 =
@@ -443,22 +443,23 @@ test("small-order actor keys are rejected even when forged signatures verify", a
   const weak = [0n, 1n, p - 1n, order8, p - order8, p, p + 1n].flatMap((y) =>
     [0, 1].map((sign) => encodeY(y, sign)),
   );
+  // 1, p - 1 and 0 are the y of the order 1, 2 and 4 points. Check the order-8
+  // constant algebraically: OpenSSL builds differ on accepting these forgeries.
+  const pow = (b, e) => {
+    let r = 1n;
+    for (b %= p; e; e >>= 1n, b = (b * b) % p) if (e & 1n) r = (r * b) % p;
+    return r;
+  };
+  const d = ((p - 121665n) * pow(121666n, p - 2n)) % p;
+  for (const y of [order8, p - order8]) {
+    const y2 = (y * y) % p;
+    assert.equal((d * y2 * y2 + 2n * y2 - 1n) % p, 0n, "double has y = 0");
+    const x2 = ((y2 - 1n) * pow(d * y2 + 1n, p - 2n)) % p;
+    assert.equal(pow(x2, (p - 1n) / 2n), 1n, "point is on the curve");
+  }
   // R = identity, S = 0 verifies for a small-order key whenever [k]A is the identity.
   const forged = Buffer.concat([encodeY(1n, 0), Buffer.alloc(32)]);
-  const spki = (raw) =>
-    createPublicKey({
-      key: Buffer.concat([Buffer.from("302a300506032b6570032100", "hex"), raw]),
-      format: "der",
-      type: "spki",
-    });
-  const forges = (raw) =>
-    Array.from({ length: 64 }, (_, i) =>
-      verify(null, Buffer.from("koinos/0.1\n" + i), spki(raw), forged),
-    ).some(Boolean);
-  const honest = Buffer.from(generateIdentity().id.slice(15), "base64url");
-  assert.equal(forges(honest), false);
   for (const raw of weak) {
-    assert.equal(forges(raw), true, "every rejected key accepts a forgery");
     const actor = "koinos:ed25519:" + raw.toString("base64url");
     const unsigned = {
       protocol: "koinos/0.1",
